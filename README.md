@@ -7,7 +7,7 @@ Personal Vim, Neovim, and IdeaVim configuration.
 With Neovim already installed, install only the Neovim config with:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Mrchazaaa/vimconfig/main/install.sh | bash -s -- --nvim
+curl -fsSL https://raw.githubusercontent.com/Mrchazaaa/vimconfig/master/install.sh | bash -s -- --nvim
 ```
 
 From a local checkout:

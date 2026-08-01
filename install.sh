@@ -4,7 +4,7 @@ set -euo pipefail
 
 REPO_URL="${VIMCONFIG_REPO_URL:-https://github.com/Mrchazaaa/vimconfig.git}"
 INSTALL_DIR="${VIMCONFIG_INSTALL_DIR:-$HOME/.config/nvim/vimconfig}"
-HELPER_URL="${VIMCONFIG_HELPER_URL:-https://raw.githubusercontent.com/Mrchazaaa/vimconfig/main/scripts/lib/install-helpers.sh}"
+HELPER_URL="${VIMCONFIG_HELPER_URL:-https://raw.githubusercontent.com/Mrchazaaa/vimconfig/master/scripts/lib/install-helpers.sh}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HELPER_PATH="$SCRIPT_DIR/scripts/lib/install-helpers.sh"
 
