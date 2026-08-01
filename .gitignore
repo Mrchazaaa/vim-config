@@ -1,0 +1,29 @@
+# Editor runtime files
+*.swp
+*.swo
+*.swn
+*.un~
+Session.vim
+.netrwhist
+
+# Vim/Neovim generated files
+.nvimlog
+shada/
+swap/
+backup/
+undo/
+view/
+
+# Local environment and tool state
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.orig
