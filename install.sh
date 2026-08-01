@@ -5,11 +5,17 @@ set -euo pipefail
 REPO_URL="${VIMCONFIG_REPO_URL:-https://github.com/Mrchazaaa/vimconfig.git}"
 INSTALL_DIR="${VIMCONFIG_INSTALL_DIR:-$HOME/.config/nvim/vimconfig}"
 HELPER_URL="${VIMCONFIG_HELPER_URL:-https://raw.githubusercontent.com/Mrchazaaa/vimconfig/master/scripts/lib/install-helpers.sh}"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-HELPER_PATH="$SCRIPT_DIR/scripts/lib/install-helpers.sh"
+SCRIPT_PATH="${BASH_SOURCE[0]:-}"
+SCRIPT_DIR=""
+HELPER_PATH=""
+
+if [[ -n "$SCRIPT_PATH" && -f "$SCRIPT_PATH" ]]; then
+  SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+  HELPER_PATH="$SCRIPT_DIR/scripts/lib/install-helpers.sh"
+fi
 
 # shellcheck source=scripts/lib/install-helpers.sh
-if [[ -f "$HELPER_PATH" ]]; then
+if [[ -n "$HELPER_PATH" && -f "$HELPER_PATH" ]]; then
   source "$HELPER_PATH"
 else
   command -v curl >/dev/null 2>&1 || {

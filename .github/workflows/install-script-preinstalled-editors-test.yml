@@ -29,9 +29,10 @@ jobs:
           HOME: ${{ runner.temp }}/home
           VIMCONFIG_REPO_URL: ${{ github.workspace }}/source
           VIMCONFIG_INSTALL_DIR: ${{ runner.temp }}/install/vimconfig
+          VIMCONFIG_HELPER_URL: file://${{ github.workspace }}/source/scripts/lib/install-helpers.sh
         run: |
           mkdir -p "$HOME"
-          timeout 60 bash "$GITHUB_WORKSPACE/source/install.sh" --vim --nvim < /dev/null
+          timeout 60 bash -s -- --vim --nvim < "$GITHUB_WORKSPACE/source/install.sh"
 
       - name: Verify installed Vim and Neovim shims
         env:
