@@ -1,0 +1,54 @@
+name: Test Install Script With Preinstalled Editors
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test-install-with-preinstalled-editors:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: source
+
+      - name: Preinstall Vim and Neovim
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y vim neovim npm
+          vim --version
+          nvim --version
+          npm --version
+
+      - name: Run installer after editors are already installed
+        env:
+          HOME: ${{ runner.temp }}/home
+          VIMCONFIG_REPO_URL: ${{ github.workspace }}/source
+          VIMCONFIG_INSTALL_DIR: ${{ runner.temp }}/install/vimconfig
+        run: |
+          mkdir -p "$HOME"
+          timeout 60 bash "$GITHUB_WORKSPACE/source/install.sh" --vim --nvim < /dev/null
+
+      - name: Verify installed Vim and Neovim shims
+        env:
+          HOME: ${{ runner.temp }}/home
+          VIMCONFIG_INSTALL_DIR: ${{ runner.temp }}/install/vimconfig
+        run: |
+          test -d "$VIMCONFIG_INSTALL_DIR/.git"
+          test -f "$HOME/.vimrc"
+          test -f "$HOME/.config/nvim/init.vim"
+
+          grep -F "source $VIMCONFIG_INSTALL_DIR/vim/.vimrc" "$HOME/.vimrc"
+          grep -F "source $VIMCONFIG_INSTALL_DIR/vim/VimSpecific.vim" "$HOME/.vimrc"
+          grep -F "source $VIMCONFIG_INSTALL_DIR/vim/.vimrc" "$HOME/.config/nvim/init.vim"
+          grep -F "lua dofile('$VIMCONFIG_INSTALL_DIR/nvim/init.lua')" "$HOME/.config/nvim/init.vim"
+
+      - name: Verify Vim starts with installed shim
+        env:
+          HOME: ${{ runner.temp }}/home
+        run: |
+          vim -Nu "$HOME/.vimrc" -n -es -c "VerifyConfig" -c "qall"

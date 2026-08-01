@@ -1,0 +1,61 @@
+name: Test Install Script
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test-install-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: source
+
+      - name: Install editor dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y neovim vim
+
+      - name: Run installer in temporary home
+        env:
+          HOME: ${{ runner.temp }}/home
+          VIMCONFIG_REPO_URL: ${{ github.workspace }}/source
+          VIMCONFIG_INSTALL_DIR: ${{ runner.temp }}/install/vimconfig
+        run: |
+          mkdir -p "$HOME"
+          bash "$GITHUB_WORKSPACE/source/install.sh" --all
+
+      - name: Verify generated config shims
+        env:
+          HOME: ${{ runner.temp }}/home
+          VIMCONFIG_INSTALL_DIR: ${{ runner.temp }}/install/vimconfig
+        run: |
+          test -d "$VIMCONFIG_INSTALL_DIR/.git"
+          test -f "$HOME/.vimrc"
+          test -f "$HOME/.config/nvim/init.vim"
+          test -f "$HOME/.ideavimrc"
+
+          grep -F "source $VIMCONFIG_INSTALL_DIR/vim/.vimrc" "$HOME/.vimrc"
+          grep -F "source $VIMCONFIG_INSTALL_DIR/vim/VimSpecific.vim" "$HOME/.vimrc"
+          grep -F "source $VIMCONFIG_INSTALL_DIR/vim/.vimrc" "$HOME/.config/nvim/init.vim"
+          grep -F "lua dofile('$VIMCONFIG_INSTALL_DIR/nvim/init.lua')" "$HOME/.config/nvim/init.vim"
+          grep -F "source $VIMCONFIG_INSTALL_DIR/ideavim/.ideavimrc" "$HOME/.ideavimrc"
+
+      - name: Verify Vim shim loads
+        env:
+          HOME: ${{ runner.temp }}/home
+        run: |
+          vim -Nu "$HOME/.vimrc" -n -es -c "VerifyConfig" -c "qall"
+
+      - name: Verify installer is idempotent
+        env:
+          HOME: ${{ runner.temp }}/home
+          VIMCONFIG_REPO_URL: ${{ github.workspace }}/source
+          VIMCONFIG_INSTALL_DIR: ${{ runner.temp }}/install/vimconfig
+        run: |
+          printf 'n\n' | bash "$GITHUB_WORKSPACE/source/install.sh" --all
