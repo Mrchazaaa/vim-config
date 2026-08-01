@@ -1,5 +1,9 @@
 # vimconfig
 
+[![Test Neovim Configuration](https://github.com/Mrchazaaa/vimconfig/actions/workflows/nvim-config-test.yml/badge.svg)](https://github.com/Mrchazaaa/vimconfig/actions/workflows/nvim-config-test.yml)
+[![Test Install Script](https://github.com/Mrchazaaa/vimconfig/actions/workflows/install-script-test.yml/badge.svg)](https://github.com/Mrchazaaa/vimconfig/actions/workflows/install-script-test.yml)
+[![Test Install Script With Preinstalled Editors](https://github.com/Mrchazaaa/vimconfig/actions/workflows/install-script-preinstalled-editors-test.yml/badge.svg)](https://github.com/Mrchazaaa/vimconfig/actions/workflows/install-script-preinstalled-editors-test.yml)
+
 Personal Vim, Neovim, and IdeaVim configuration.
 
 ## Install
