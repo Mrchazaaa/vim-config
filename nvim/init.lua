@@ -7,7 +7,13 @@ require('lazy-bootstrap')
 
 -- Setup lazy.nvim with plugins (now lazy.nvim is available)
 require('lazy').setup(require('lazy-plugins'), {
-  change_detection = { notify = false }
+  change_detection = { notify = false },
+  rocks = { enabled = false },
+  performance = {
+    rtp = {
+      paths = { "/usr/lib/nvim" },
+    },
+  },
 })
 
 -- UI components (theme customizations after lazy loads)
