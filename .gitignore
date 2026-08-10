@@ -8,11 +8,17 @@ Session.vim
 
 # Vim/Neovim generated files
 .nvimlog
+lazy-lock.json
 shada/
 swap/
 backup/
 undo/
 view/
+
+# Installer-generated local files
+/init.vim
+/vimconfig/
+*.backup.*
 
 # Local environment and tool state
 .DS_Store

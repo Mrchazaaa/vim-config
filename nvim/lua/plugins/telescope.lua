@@ -2,6 +2,9 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>p", "<Cmd>Telescope<CR>", desc = "Open Telescope" },
+    },
     config = function()
       require("telescope").setup({
         pickers = {

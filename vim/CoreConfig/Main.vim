@@ -37,6 +37,12 @@ set noshowmode
 set signcolumn=yes
 set mouse=a
 set updatetime=1000
+set autoread
+
+augroup auto_checktime
+  autocmd!
+  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * checktime
+augroup END
 
 set number relativenumber
 
