@@ -22,3 +22,15 @@ From a local checkout:
 
 Use `--vim`, `--ideavim`, or `--all` for other targets. With no target flag,
 the installer installs the Vim and Neovim shims.
+
+### Windows
+
+From a PowerShell session in a local checkout, install the Neovim shim into
+the standard Windows config directory:
+
+```powershell
+.\install.ps1
+```
+
+This writes `%LOCALAPPDATA%\nvim\init.vim` and loads the configuration from
+that checkout. Neovim and npm must already be available on `PATH`.
