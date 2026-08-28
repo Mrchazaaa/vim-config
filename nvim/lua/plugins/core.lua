@@ -16,6 +16,12 @@ return {
         bypass_save_filetypes = {
           "dashboard"
         },
+        pre_save_cmds = {
+          function()
+            local diffview = package.loaded.diffview and require("diffview.lib")
+            if diffview and #diffview.views > 0 then vim.cmd("tabdo DiffviewClose") end
+          end,
+        },
         suppressed_dirs = {
           "~/",
           "~/Projects",
