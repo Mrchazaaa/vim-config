@@ -139,6 +139,7 @@ return {
       lsp_zero.on_attach(function(client, bufnr)
         -- Default keymaps (gd, gr, K, etc.)
         lsp_zero.default_keymaps({ buffer = bufnr })
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr, desc = "LSP references" })
 
         -- Enable inlay hints if server provides them (Neovim 0.10+)
         if client.server_capabilities.inlayHintProvider then

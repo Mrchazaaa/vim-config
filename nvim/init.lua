@@ -19,12 +19,6 @@ require('lazy').setup(require('lazy-plugins'), {
 -- UI components (theme customizations after lazy loads)
 require('ui').setup()
 
-vim.api.nvim_create_user_command("VimConfig", function()
-  vim.cmd("tabnew")
-  vim.cmd("tcd " .. vim.fn.fnameescape(vim.fn.stdpath("config")))
-  require("nvim-tree.api").tree.open({ path = vim.fn.stdpath("config") })
-end, { desc = "Open Neovim's config directory in a new tab" })
-
 vim.api.nvim_create_user_command("HelpMe", function()
   vim.cmd("new " .. vim.fn.fnameescape(config_path .. "/../Help.md"))
 end, { desc = "Open this configuration's help in a new window" })
