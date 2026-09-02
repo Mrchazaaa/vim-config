@@ -30,10 +30,13 @@ files_to_open=(
     "$PWD/nvim/init.lua"
 )
 
+<<<<<<< Updated upstream
 if [ -f "$PWD/vimconfig/nvim/init.lua" ]; then
     files_to_open+=("$PWD/vimconfig/nvim/init.lua")
 fi
 
+=======
+>>>>>>> Stashed changes
 tmp_lua_file="$(mktemp --suffix=.lua)"
 trap 'rm -f "$tmp_lua_file"' EXIT
 printf 'return true\n' > "$tmp_lua_file"

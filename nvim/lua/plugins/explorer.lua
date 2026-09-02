@@ -34,6 +34,7 @@ return {
         },
         filters = {
           dotfiles = false,
+          git_ignored = false,
         },
         diagnostics = {
           enable = true, -- show LSP diagnostics in the tree

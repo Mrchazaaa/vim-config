@@ -13,6 +13,7 @@ local plugin_modules = {
   "plugins.git",
   "plugins.lsp",
   "plugins.csv",
+  "plugins.markdown",
 }
 
 for _, module in ipairs(plugin_modules) do
