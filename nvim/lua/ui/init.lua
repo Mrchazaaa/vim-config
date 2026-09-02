@@ -16,6 +16,11 @@ function M.setup()
     if vim.fn.has('termguicolors') == 1 then
         vim.opt.termguicolors = true
     end
+
+    -- <leader>d: collect all diagnostics into the quickfix list and open it.
+    vim.keymap.set('n', '<leader>d', function()
+        vim.diagnostic.setqflist()
+    end, { desc = 'Diagnostics to quickfix list' })
 end
 
 return M

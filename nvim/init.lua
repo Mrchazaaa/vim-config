@@ -2,6 +2,9 @@
 local config_path = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ':p:h')
 package.path = config_path .. '/lua/?.lua;' .. config_path .. '/lua/?/init.lua;' .. package.path
 
+-- Prefer LF line endings (matches repo .gitattributes; avoids diffview CRLF/LF mismatch)
+vim.opt.fileformats = { "unix", "dos" }
+
 -- Bootstrap lazy.nvim (this must happen before requiring lazy)
 require('lazy-bootstrap')
 
