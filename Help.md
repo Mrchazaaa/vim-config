@@ -14,6 +14,7 @@ Use `:q` to close the help window.
 
 - `gd` jumps to the definition under the cursor; `<C-o>` jumps back.
 - `gr` lists all references to the symbol under the cursor.
+- `]q` / `[q` step to the next/previous reference (quickfix entry) without leaving your place.
 - `K` shows hover documentation for the symbol under the cursor.
 - `grr` renames the symbol under the cursor across the project.
 - `<leader>p` opens Telescope; from there pick `find_files` or `live_grep` to search files and contents.
