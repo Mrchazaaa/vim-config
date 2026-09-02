@@ -36,7 +36,7 @@ return {
           enable = true,
           keymaps = { smart_rename = 'grr' },
         },
-        highlight_definitions = { enable = true },
+        highlight_definitions = { enable = false },
         navigation = { enable = true },
       },
       textobjects = {

@@ -3,5 +3,6 @@ command! MessagesToBuf
       \ silent messages |
       \ redir END |
       \ new |
-      \ put =m
- 
+      \ setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted |
+      \ put =m |
+      \ setlocal nomodifiable
