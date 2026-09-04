@@ -36,6 +36,17 @@ return {
             nvim_tree_api.tree.change_root(vim.fn.getcwd())
             nvim_tree_api.tree.reload()
           end,
+          function()
+            -- Re-apply tree-sitter folding (sessions restore stale localoptions)
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+              local buf = vim.api.nvim_win_get_buf(win)
+              if pcall(vim.treesitter.get_parser, buf) then
+                vim.wo[win].foldmethod = "expr"
+                vim.wo[win].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+                vim.wo[win].foldenable = false
+              end
+            end
+          end,
         },
       }
     end,

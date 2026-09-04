@@ -5,6 +5,18 @@ package.path = config_path .. '/lua/?.lua;' .. config_path .. '/lua/?/init.lua;'
 -- Prefer LF line endings (matches repo .gitattributes; avoids diffview CRLF/LF mismatch)
 vim.opt.fileformats = { "unix", "dos" }
 
+-- Tree-sitter based code folding (folds start open).
+-- Set per-window when a treesitter parser exists, so lazy-loaded parsers still fold.
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    if pcall(vim.treesitter.get_parser, args.buf) then
+      vim.opt_local.foldmethod = "expr"
+      vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      vim.opt_local.foldenable = false
+    end
+  end,
+})
+
 -- Bootstrap lazy.nvim (this must happen before requiring lazy)
 require('lazy-bootstrap')
 

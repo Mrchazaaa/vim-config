@@ -9,6 +9,7 @@ Use `:q` to close the help window.
 - `<C-g>` shows the current file's path in the status area.
 - `1<C-g>` shows the full absolute path.
 - `:echo expand('%:p')` prints the full absolute path; use `%:h` for its directory, `%:t` for the filename.
+- `:let @+ = expand('%:p')` copies the current buffer's absolute path into the system clipboard.
 
 ## Code navigation
 
@@ -20,4 +21,11 @@ Use `:q` to close the help window.
 - `grr` renames the symbol under the cursor across the project.
 - `<leader>p` opens Telescope; from there pick `find_files` or `live_grep` to search files and contents.
 - `<C-i>` / `<C-o>` move forward/backward through your jump history.
+
+## Code folding
+Folds are tree-sitter based and start open.
+- `za` toggles the fold under the cursor; `zo` / `zc` open / close one fold.
+- `zO` / `zC` / `zA` recursively open / close / toggle all folds under the cursor.
+- `zR` / `zM` open / close all folds in the file.
+- `zj` / `zk` jump to the next / previous fold.
 
