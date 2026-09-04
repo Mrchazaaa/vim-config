@@ -2,9 +2,9 @@
 
 set -euo pipefail
 
-REPO_URL="${VIMCONFIG_REPO_URL:-https://github.com/Mrchazaaa/vimconfig.git}"
-INSTALL_DIR="${VIMCONFIG_INSTALL_DIR:-$HOME/.config/nvim/vimconfig}"
-HELPER_URL="${VIMCONFIG_HELPER_URL:-https://raw.githubusercontent.com/Mrchazaaa/vimconfig/master/scripts/lib/install-helpers.sh}"
+REPO_URL="${VIMCONFIG_REPO_URL:-https://github.com/Mrchazaaa/vim-config.git}"
+INSTALL_DIR="${VIMCONFIG_INSTALL_DIR:-$HOME/.config/nvim/vim-config}"
+HELPER_URL="${VIMCONFIG_HELPER_URL:-https://raw.githubusercontent.com/Mrchazaaa/vim-config/master/scripts/lib/install-helpers.sh}"
 SCRIPT_PATH="${BASH_SOURCE[0]:-}"
 SCRIPT_DIR=""
 HELPER_PATH=""
@@ -45,7 +45,7 @@ install_or_update_repo() {
   mkdir -p "$(dirname "$INSTALL_DIR")"
 
   if [[ -d "$INSTALL_DIR/.git" ]]; then
-    log "Existing vimconfig Git checkout found at $INSTALL_DIR."
+    log "Existing vim-config Git checkout found at $INSTALL_DIR."
     if ask_yes_no "Pull the latest changes for the deployed vim config?"; then
       git -C "$INSTALL_DIR" pull --ff-only
     else
@@ -58,7 +58,7 @@ install_or_update_repo() {
     die "$INSTALL_DIR already exists but is not a Git checkout. Move it aside or set VIMCONFIG_INSTALL_DIR to another path."
   fi
 
-  log "Cloning vimconfig into $INSTALL_DIR"
+  log "Cloning vim-config into $INSTALL_DIR"
   git clone "$REPO_URL" "$INSTALL_DIR"
 }
 
@@ -113,7 +113,7 @@ run_installer() {
 main() {
   parse_targets "$@"
 
-  log "Installing vimconfig from $REPO_URL"
+  log "Installing vim-config from $REPO_URL"
   log "Target checkout: $INSTALL_DIR"
 
   ensure_command git git "Would you like to install git now?"

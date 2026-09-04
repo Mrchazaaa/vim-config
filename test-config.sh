@@ -30,13 +30,10 @@ files_to_open=(
     "$PWD/nvim/init.lua"
 )
 
-<<<<<<< Updated upstream
-if [ -f "$PWD/vimconfig/nvim/init.lua" ]; then
-    files_to_open+=("$PWD/vimconfig/nvim/init.lua")
+if [ -f "$PWD/vim-config/nvim/init.lua" ]; then
+    files_to_open+=("$PWD/vim-config/nvim/init.lua")
 fi
 
-=======
->>>>>>> Stashed changes
 tmp_lua_file="$(mktemp --suffix=.lua)"
 trap 'rm -f "$tmp_lua_file"' EXIT
 printf 'return true\n' > "$tmp_lua_file"
@@ -52,7 +49,7 @@ done
 
 # Test plugin manager (if using lazy.nvim)
 echo "5. Testing plugin manager..."
-if [ -f "vimconfig/nvim/lua/lazy-bootstrap.lua" ]; then
+if [ -f "vim-config/nvim/lua/lazy-bootstrap.lua" ]; then
     timeout 30 nvim --headless -c "lua require('lazy-bootstrap')" -c "qall!" || {
         echo "Plugin manager test failed"
         exit 1
