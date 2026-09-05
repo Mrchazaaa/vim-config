@@ -1,7 +1,13 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+      },
+    },
     cmd = "Telescope",
     keys = {
       { "<leader>p", "<Cmd>Telescope<CR>", desc = "Open Telescope" },
@@ -12,9 +18,10 @@ return {
           path_display = { "smart" },
         },
       })
+      require("telescope").load_extension("fzf")
 
       local tc = require("telescope.config")
-      local show_all = true
+      local show_all = false
 
       local function apply()
         if show_all then
@@ -39,27 +46,6 @@ return {
       end, {})
 
       apply()
-    end,
-    opts = function()
-      local actions = require("telescope.actions")
-      return {
-        defaults = {
-          mappings = {
-            i = {
-              ["<C-j>"]    = actions.preview_scrolling_down,
-              ["<C-k>"]    = actions.preview_scrolling_up,
-              ["<C-Up>"]   = actions.preview_scrolling_up,
-              ["<C-Down>"] = actions.preview_scrolling_down,
-            },
-            n = {
-              ["<C-j>"]    = actions.preview_scrolling_down,
-              ["<C-k>"]    = actions.preview_scrolling_up,
-              ["<C-Up>"]   = actions.preview_scrolling_up,
-              ["<C-Down>"] = actions.preview_scrolling_down,
-            },
-          },
-        },
-      }
     end,
   },
 }

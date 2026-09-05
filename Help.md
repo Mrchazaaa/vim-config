@@ -20,7 +20,7 @@ Use `:q` to close the help window.
 - `<leader>d` collects all diagnostics into the quickfix list and opens it (step through with `]q` / `[q`).
 - `grr` renames the symbol under the cursor across the project.
 - `<leader>p` opens Telescope; from there pick `find_files` or `live_grep` to search files and contents.
-- `:ToggleIgnore` toggles whether hidden/gitignored files show up in all Telescope searches (`:Telescope find_files`, `:Telescope live_grep`). Prints whether the feature is ON or OFF. Default is ON.
+- `:ToggleIgnore` toggles whether hidden/gitignored files show up in all Telescope searches (`:Telescope find_files`, `:Telescope live_grep`). Prints whether the feature is ON or OFF. Default is OFF.
 - `<C-i>` / `<C-o>` move forward/backward through your jump history.
 
 ## Code folding
@@ -29,4 +29,12 @@ Folds are tree-sitter based and start open.
 - `zO` / `zC` / `zA` recursively open / close / toggle all folds under the cursor.
 - `zR` / `zM` open / close all folds in the file.
 - `zj` / `zk` jump to the next / previous fold.
+
+## Tabs
+- `:tabnew` (or `:tabnew <file>`) opens a new tab.
+- `gt` / `gT` go to the next / previous tab.
+- `{n}gt` goes to tab `n` (e.g. `3gt`).
+- `:tabclose` (or `:tabc`) closes the current tab.
+- `:tabmove {n}` moves the current tab to position `n`.
+- `:tabs` lists all tabs.
 
