@@ -17,6 +17,9 @@ function M.setup()
         vim.opt.termguicolors = true
     end
 
+    -- Clear search highlight on Esc
+    vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
+
     -- <leader>d: collect all diagnostics into the quickfix list and open it.
     vim.keymap.set('n', '<leader>d', function()
         vim.diagnostic.setqflist()
