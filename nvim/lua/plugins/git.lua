@@ -147,6 +147,19 @@ return {
       default_args = {
         DiffviewOpen = { "--unfold-all" },
       },
+      file_panel = {
+        win_config = {
+          position = "left",
+        },
+      },
+      keymaps = {
+        view = {
+          { "n", "<leader>e", "<Cmd>DiffviewToggleFiles<CR>", { desc = "Toggle the file panel" } },
+        },
+        file_panel = {
+          { "n", "<leader>e", "<Cmd>DiffviewToggleFiles<CR>", { desc = "Close the file panel" } },
+        },
+      },
       hooks = {
         diff_buf_win_enter = function()
           vim.keymap.set("n", "<leader>wd", function()

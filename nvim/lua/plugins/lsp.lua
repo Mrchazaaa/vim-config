@@ -155,17 +155,19 @@ return {
       })
 
       -- LSP servers via mason-lspconfig
+      local servers = {
+        "lua_ls",
+        "pyright",
+        "jsonls",
+        "yamlls",
+        "eslint",
+        "bashls",
+        "ts_ls",
+        "vuels",
+      }
       require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "pyright",
-          "jsonls",
-          "yamlls",
-          "eslint",
-          "bashls",
-          "ts_ls",
-          "vuels",
-        },
+        automatic_enable = servers,
+        ensure_installed = servers,
         handlers = {
           -- Default handler (recommended by lsp-zero v4)
           lsp_zero.default_setup,

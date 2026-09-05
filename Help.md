@@ -20,6 +20,7 @@ Use `:q` to close the help window.
 - `<leader>d` collects all diagnostics into the quickfix list and opens it (step through with `]q` / `[q`).
 - `grr` renames the symbol under the cursor across the project.
 - `<leader>p` opens Telescope; from there pick `find_files` or `live_grep` to search files and contents.
+- `:ToggleIgnore` toggles whether hidden/gitignored files show up in all Telescope searches (`:Telescope find_files`, `:Telescope live_grep`). Prints whether the feature is ON or OFF. Default is ON.
 - `<C-i>` / `<C-o>` move forward/backward through your jump history.
 
 ## Code folding
