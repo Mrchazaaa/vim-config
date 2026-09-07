@@ -36,8 +36,8 @@ return {
           highlight_git = true
         },
         filters = {
-          dotfiles = false,
-          git_ignored = false,
+          dotfiles = true,
+          git_ignored = true,
         },
         diagnostics = {
           enable = true, -- show LSP diagnostics in the tree

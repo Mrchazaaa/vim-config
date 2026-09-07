@@ -42,6 +42,9 @@ return {
       vim.api.nvim_create_user_command("ToggleIgnore", function()
         show_all = not show_all
         apply()
+        local nvim_tree_api = require("nvim-tree.api")
+        nvim_tree_api.filter.dotfiles.toggle()
+        nvim_tree_api.filter.git.ignored.toggle()
         print("Show hidden/ignored files: " .. (show_all and "ON" or "OFF"))
       end, {})
 
