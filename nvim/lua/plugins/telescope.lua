@@ -5,7 +5,9 @@ return {
       "nvim-lua/plenary.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
+        build = vim.fn.has("win32") == 1
+          and "zig cc -O3 -shared -o build/libfzf.dll src/fzf.c"
+          or "make",
       },
     },
     cmd = "Telescope",

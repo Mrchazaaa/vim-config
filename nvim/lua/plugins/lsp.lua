@@ -163,63 +163,31 @@ return {
         "eslint",
         "bashls",
         "ts_ls",
-        "vuels",
+        "omnisharp",
+        "powershell-editor-services",
       }
       require("mason-lspconfig").setup({
         automatic_enable = servers,
         ensure_installed = servers,
-        handlers = {
-          -- Default handler (recommended by lsp-zero v4)
-          lsp_zero.default_setup,
+      })
 
-          -- Custom handler for lua_ls
-          lua_ls = function()
-            local lua_opts = lsp_zero.nvim_lua_ls()
+      -- Per-server overrides. mason-lspconfig v2 dropped `handlers`; nvim 0.11+
+      -- merges these on top of the configs nvim-lspconfig ships in lsp/.
+      vim.lsp.config("lua_ls", vim.tbl_deep_extend("force", lsp_zero.nvim_lua_ls(), {
+        settings = {
+          Lua = {
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+          },
+        },
+      }))
 
-            -- Additional tweaks for lua_ls
-            lua_opts.settings = lua_opts.settings or {}
-            lua_opts.settings.Lua = lua_opts.settings.Lua or {}
-            lua_opts.settings.Lua.workspace = vim.tbl_deep_extend(
-              "force",
-              lua_opts.settings.Lua.workspace or {},
-              { checkThirdParty = false }
-            )
-            lua_opts.settings.Lua.telemetry = { enable = false }
-
-            require("lspconfig").lua_ls.setup(lua_opts)
-          end,
-
-          -- Custom handler for TypeScript
-          ts_ls = function()
-            require("lspconfig").ts_ls.setup({
-              filetypes = {
-                "javascript",
-                "javascriptreact",
-                "typescript",
-                "typescriptreact",
-                "vue", -- Add this so ts_ls runs for .vue files
-              },
-              settings = {
-                javascript = {
-                  inlayHints = { includeInlayParameterNameHints = "all" },
-                },
-                typescript = {
-                  inlayHints = { includeInlayParameterNameHints = "all" },
-                },
-              },
-            })
-          end,
-
-          vuels = function()
-            require("lspconfig").volar.setup({
-              filetypes = { "vue" },
-              init_options = {
-                typescript = {
-                  tsdk = vim.fn.getcwd() .. "/node_modules/typescript/lib",
-                },
-              },
-            })
-          end,
+      vim.lsp.config("ts_ls", {
+        -- run for .vue too, since vue_ls isn't installable right now
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+        settings = {
+          javascript = { inlayHints = { includeInlayParameterNameHints = "all" } },
+          typescript = { inlayHints = { includeInlayParameterNameHints = "all" } },
         },
       })
 
