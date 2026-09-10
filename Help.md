@@ -25,10 +25,13 @@ Use `:q` to close the help window.
 
 ## Code folding
 Folds are tree-sitter based and start open.
-- `za` toggles the fold under the cursor; `zo` / `zc` open / close one fold.
-- `zO` / `zC` / `zA` recursively open / close / toggle all folds under the cursor.
+- `za` toggles the fold under the cursor; 
+- `zA` recursively toggle all folds under the cursor
 - `zR` / `zM` open / close all folds in the file.
-- `zj` / `zk` jump to the next / previous fold.
+
+## Panes
+- `<C-w>+` / `<C-w>-` make the current pane taller / shorter.
+- `<C-w>>` / `<C-w><` make the current pane wider / narrower.
 
 ## Tabs
 - `:tabnew` (or `:tabnew <file>`) opens a new tab.
