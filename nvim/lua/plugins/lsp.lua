@@ -164,7 +164,7 @@ return {
         "bashls",
         "ts_ls",
         "omnisharp",
-        "powershell-editor-services",
+        "powershell_es",
       }
       require("mason-lspconfig").setup({
         automatic_enable = servers,
