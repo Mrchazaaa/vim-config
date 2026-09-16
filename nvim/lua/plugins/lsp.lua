@@ -101,6 +101,27 @@ return {
         end
       end
 
+      -- nvim-treesitter master registers predicates with `all = false` (match[id] = node).
+      -- nvim 0.12 dropped that option and always passes a node list, so its handlers crash
+      -- on markdown info strings / <script type=...>. Reload them through an adapter.
+      -- ponytail: shim for an EOL branch; delete when migrating to nvim-treesitter `main`.
+      local q = vim.treesitter.query
+      local add_predicate, add_directive = q.add_predicate, q.add_directive
+      local function adapt(handler)
+        return function(match, ...)
+          local flat = {}
+          for id, nodes in pairs(match) do
+            flat[id] = nodes[#nodes]
+          end
+          return handler(flat, ...)
+        end
+      end
+      q.add_predicate = function(name, handler, o) return add_predicate(name, adapt(handler), o) end
+      q.add_directive = function(name, handler, o) return add_directive(name, adapt(handler), o) end
+      package.loaded['nvim-treesitter.query_predicates'] = nil
+      require('nvim-treesitter.query_predicates')
+      q.add_predicate, q.add_directive = add_predicate, add_directive
+
       require('nvim-treesitter.configs').setup(opts)
     end,
   },
@@ -163,7 +184,8 @@ return {
         "eslint",
         "bashls",
         "ts_ls",
-        "omnisharp",
+        -- "omnisharp",
+        "roslyn_ls",
         "powershell_es",
       }
       require("mason-lspconfig").setup({

@@ -44,6 +44,7 @@ return {
         },
         git = {
           enable = true, -- show git status
+          timeout = 5000, -- big repos (C:/source/core) blow the 400ms default
         },
       })
 

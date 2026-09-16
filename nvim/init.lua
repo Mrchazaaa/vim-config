@@ -17,6 +17,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- OmniSharp spams WARN-level noise (grew lsp.log to 6.8GB). Only log real errors.
+vim.lsp.log.set_level(vim.log.levels.ERROR)
+
 -- Bootstrap lazy.nvim (this must happen before requiring lazy)
 require('lazy-bootstrap')
 

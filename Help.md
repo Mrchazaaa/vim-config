@@ -23,6 +23,18 @@ Use `:q` to close the help window.
 - `:ToggleIgnore` toggles whether hidden/gitignored files show up in Telescope searches and nvim-tree. Prints whether the feature is ON or OFF. Default is OFF.
 - `<C-i>` / `<C-o>` move forward/backward through your jump history.
 
+## Completion and code actions
+- Completion (nvim-cmp) pops up automatically while typing. `<Tab>` / `<S-Tab>` cycle the menu, `<CR>` accepts the selection.
+- Sources are global, so every filetype gets them: LSP, buffer words, file paths, and snippets. A filetype with no language server attached still gets buffer/path/snippet completion, which is plain text matching rather than language-aware suggestions.
+- `<F4>` runs the code action under the cursor (quick fixes, auto-imports, generated stubs). Requires an attached language server; filetypes without one return nothing.
+- `<F2>` renames the symbol under the cursor; `<F3>` formats the buffer (or the selection, in visual mode).
+- `:Format` formats via conform.nvim, falling back to the language server when no formatter is configured for the filetype. Formatters are registered per-filetype, so a filetype that's absent from that list is left untouched.
+
+## LSP status
+- `:LspInfo` (alias for `:checkhealth vim.lsp`) shows which language servers are attached to the current buffer, plus their root dir and settings.
+- `:lua =vim.tbl_map(function(c) return c.name end, vim.lsp.get_clients())` lists just the names of the clients running right now.
+- `:Mason` shows which servers are installed (`i` installs, `X` uninstalls); a server can be installed but not attached if the filetype doesn't match.
+
 ## Code folding
 Folds are tree-sitter based and start open.
 - `za` toggles the fold under the cursor; 
@@ -40,3 +52,5 @@ Folds are tree-sitter based and start open.
 - `:tabclose` (or `:tabc`) closes the current tab.
 - `:tabmove {n}` moves the current tab to position `n`.
 - `:tabs` lists all tabs.
+- `<C-w>T` moves the current window (buffer) into a new tab.
+- `:tab split` opens the current buffer in a new tab, keeping the original window.
