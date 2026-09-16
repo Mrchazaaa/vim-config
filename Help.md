@@ -68,3 +68,5 @@ Folds are tree-sitter based and start open.
 - `:Rg pattern` — find all matches across project (fills quickfix list).
 - `:cfdo %s/pattern/replacement/g | update` — replace in every file, save.
 - `:cfdo %s/pattern/replacement/gc | update` — confirm each replacement.
+- `:SearchAndReplace` — prompts for pattern and replacement, replaces across project.
+- `:SearchAndReplaceConfirm` — same but confirms each replacement.

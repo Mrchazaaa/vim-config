@@ -32,6 +32,27 @@ function M.setup()
     vim.keymap.set('n', '<leader>d', function()
         vim.diagnostic.setqflist()
     end, { desc = 'Diagnostics to quickfix list' })
+
+    -- Search and replace across project
+    vim.api.nvim_create_user_command("SearchAndReplace", function()
+        local pattern = vim.fn.input("Search pattern: ")
+        if pattern == "" then return end
+        local replacement = vim.fn.input("Replace with: ")
+        vim.cmd("Rg " .. pattern)
+        local esc_pattern = vim.fn.escape(pattern, "/")
+        local esc_replacement = vim.fn.escape(replacement, "/")
+        vim.cmd("cfdo %s/" .. esc_pattern .. "/" .. esc_replacement .. "/g | update")
+    end, {})
+
+    vim.api.nvim_create_user_command("SearchAndReplaceConfirm", function()
+        local pattern = vim.fn.input("Search pattern: ")
+        if pattern == "" then return end
+        local replacement = vim.fn.input("Replace with: ")
+        vim.cmd("Rg " .. pattern)
+        local esc_pattern = vim.fn.escape(pattern, "/")
+        local esc_replacement = vim.fn.escape(replacement, "/")
+        vim.cmd("cfdo %s/" .. esc_pattern .. "/" .. esc_replacement .. "/gc | update")
+    end, {})
 end
 
 return M
