@@ -19,6 +19,7 @@ Use `:q` to close the help window.
 - `K` shows hover documentation for the symbol under the cursor.
 - `<leader>d` collects all diagnostics into the quickfix list and opens it (step through with `]q` / `[q`).
 - `grr` renames the symbol under the cursor across the project.
+- `<leader>ca` opens available code actions (works in visual mode for range-specific actions).
 - `<leader>p` opens Telescope; from there pick `find_files` or `live_grep` to search files and contents.
 - `:ToggleIgnore` toggles whether hidden/gitignored files show up in Telescope searches and nvim-tree. Prints whether the feature is ON or OFF. Default is OFF.
 - `<C-i>` / `<C-o>` move forward/backward through your jump history.
@@ -40,3 +41,16 @@ Folds are tree-sitter based and start open.
 - `:tabclose` (or `:tabc`) closes the current tab.
 - `:tabmove {n}` moves the current tab to position `n`.
 - `:tabs` lists all tabs.
+
+## Find and Replace
+- `/pattern` or `?pattern` — search forward/backward; `n`/`N` next/previous match.
+- `Esc` clears search highlights.
+- `:%s/old/new/g` — replace all in current file.
+- `:%s/old/new/gc` — confirm each replacement.
+- `:'<,'>s/old/new/g` — replace all in visual selection.
+- Search is case-insensitive by default; uppercase in pattern forces exact case.
+
+### Project-wide replace
+- `:Rg pattern` — find all matches across project (fills quickfix list).
+- `:cfdo %s/pattern/replacement/g | update` — replace in every file, save.
+- `:cfdo %s/pattern/replacement/gc | update` — confirm each replacement.
