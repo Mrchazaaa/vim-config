@@ -160,6 +160,7 @@ return {
       lsp_zero.on_attach(function(client, bufnr)
         -- Default keymaps (gd, gr, K, etc.)
         lsp_zero.default_keymaps({ buffer = bufnr })
+        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
         vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr, desc = "LSP references" })
         vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { buffer = bufnr, desc = "Next quickfix (reference)" })
         vim.keymap.set("n", "[q", "<cmd>cprev<CR>", { buffer = bufnr, desc = "Prev quickfix (reference)" })
