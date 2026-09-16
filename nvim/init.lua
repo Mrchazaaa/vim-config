@@ -38,8 +38,8 @@ require('lazy').setup(require('lazy-plugins'), {
 require('ui').setup()
 
 vim.api.nvim_create_user_command("HelpMe", function()
-  vim.cmd("new " .. vim.fn.fnameescape(config_path .. "/../Help.md"))
-end, { desc = "Open this configuration's help in a new window" })
+  vim.cmd("tabnew " .. vim.fn.fnameescape(config_path .. "/../Help.md"))
+end, { desc = "Open this configuration's help in a new tab" })
 
 -- Create a Lua scratchfile command
 vim.api.nvim_create_user_command("LuaScratch", function()

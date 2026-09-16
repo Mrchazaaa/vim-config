@@ -33,6 +33,23 @@ function M.setup()
         vim.diagnostic.setqflist()
     end, { desc = 'Diagnostics to quickfix list' })
 
+    vim.keymap.set('n', '<leader>q', function()
+        if vim.fn.getcmdwintype() ~= '' then
+            vim.cmd('quit')
+            return
+        end
+
+        for _, win in ipairs(vim.fn.getwininfo()) do
+            if win.quickfix == 1 and win.loclist == 0 then
+                vim.cmd('cclose')
+                return
+            end
+        end
+        vim.cmd('copen')
+    end, { desc = 'Toggle quickfix list' })
+
+    vim.keymap.set('n', 'q:', '<Nop>', { desc = 'Disable command history window' })
+
     -- Search and replace across project
     vim.api.nvim_create_user_command("SearchAndReplace", function()
         local pattern = vim.fn.input("Search pattern: ")
