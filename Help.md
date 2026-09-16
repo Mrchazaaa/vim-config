@@ -70,3 +70,9 @@ Folds are tree-sitter based and start open.
 - `:cfdo %s/pattern/replacement/gc | update` — confirm each replacement.
 - `:SearchAndReplace` — prompts for pattern and replacement, replaces across project.
 - `:SearchAndReplaceConfirm` — same but confirms each replacement.
+
+## Git review
+- `:DiffviewFileHistory` — opens the repository commit history, newest first.
+- In the history panel, `<CR>`, `o`, or double-click opens the selected commit in Diffview.
+- `<C-A-d>` also opens the selected commit in Diffview.
+- `:DiffviewFileHistory %` — shows history for only the current file.
