@@ -23,32 +23,40 @@ return {
       require("telescope").load_extension("fzf")
 
       local tc = require("telescope.config")
-      local show_all = false
+      local nvim_tree_api = require("nvim-tree.api")
+      local show_ignored = false
+      local show_hidden = true
 
       local function apply()
-        if show_all then
-          tc.set_pickers({
-            find_files = { hidden = true, no_ignore = true },
-            live_grep = {
-              additional_args = function() return { "--hidden", "--no-ignore" } end,
-            },
-          })
-        else
-          tc.set_pickers({
-            find_files = { hidden = false, no_ignore = false },
-            live_grep = {},
-          })
-        end
+        tc.set_pickers({
+          find_files = {
+            hidden = show_hidden,
+            no_ignore = show_ignored,
+          },
+          live_grep = {
+            additional_args = function()
+              local args = {}
+              if show_hidden then table.insert(args, "--hidden") end
+              if show_ignored then table.insert(args, "--no-ignore") end
+              return args
+            end,
+          },
+        })
       end
 
       vim.api.nvim_create_user_command("ToggleIgnore", function()
-        show_all = not show_all
-        apply()
-        local nvim_tree_api = require("nvim-tree.api")
-        nvim_tree_api.filter.dotfiles.toggle()
+        show_ignored = not show_ignored
         nvim_tree_api.filter.git.ignored.toggle()
-        print("Show hidden/ignored files: " .. (show_all and "ON" or "OFF"))
-      end, {})
+        apply()
+        print("Show gitignored files: " .. (show_ignored and "ON" or "OFF"))
+      end, { desc = "Toggle gitignored files" })
+
+      vim.api.nvim_create_user_command("ToggleHidden", function()
+        show_hidden = not show_hidden
+        nvim_tree_api.filter.dotfiles.toggle()
+        apply()
+        print("Show hidden files: " .. (show_hidden and "ON" or "OFF"))
+      end, { desc = "Toggle hidden files" })
 
       apply()
     end,
