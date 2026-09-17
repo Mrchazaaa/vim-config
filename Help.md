@@ -17,12 +17,27 @@ Use `:q` to close the help window.
 - `gr` lists all references to the symbol under the cursor.
 - `]q` / `[q` step to the next/previous reference (quickfix entry) without leaving your place.
 - `K` shows hover documentation for the symbol under the cursor.
-- `<leader>d` collects all diagnostics into the quickfix list and opens it (step through with `]q` / `[q`).
+- `<leader>dd` collects all diagnostics into the quickfix list and opens it (step through with `]q` / `[q`).
 - `grr` renames the symbol under the cursor across the project.
-- `<leader>ca` opens available code actions (works in visual mode for range-specific actions).
+- `<leader>ca` opens available code actions (works in visual mode for range-specific actions). The list appears in a small Telescope window anchored at the cursor.
 - `<leader>p` opens Telescope; from there pick `find_files` or `live_grep` to search files and contents.
 - `:ToggleIgnore` toggles whether hidden/gitignored files show up in Telescope searches and nvim-tree. Prints whether the feature is ON or OFF. Default is OFF.
 - `<C-i>` / `<C-o>` move forward/backward through your jump history.
+
+### Peeking with Telescope (`<leader>l`)
+Same LSP queries as `gd` / `gr`, but in a Telescope picker with a preview pane — you
+see the code without leaving the buffer, and `<Esc>` backs out with your cursor untouched.
+Only bound while a language server is attached.
+
+- `<leader>ld` — definitions of the symbol under the cursor.
+- `<leader>lr` — references to it.
+- `<leader>li` — implementations (interfaces, abstract methods).
+- `<leader>lt` — type definition.
+- `<leader>ls` — symbols in the current file.
+- `<leader>lw` — symbols across the workspace (fuzzy, queries the server as you type).
+- `<leader>lc` / `<leader>lo` — incoming / outgoing calls (who calls this, what this calls).
+
+In the picker: `<C-n>`/`<C-p>` move, `<CR>` jumps, `<C-x>`/`<C-v>`/`<C-t>` open in a split/vsplit/tab.
 
 ## Completion and code actions
 - Completion (nvim-cmp) pops up automatically while typing. `<Tab>` / `<S-Tab>` cycle the menu, `<CR>` accepts the selection.

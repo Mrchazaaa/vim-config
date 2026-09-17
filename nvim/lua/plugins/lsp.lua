@@ -165,6 +165,21 @@ return {
         vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { buffer = bufnr, desc = "Next quickfix (reference)" })
         vim.keymap.set("n", "[q", "<cmd>cprev<CR>", { buffer = bufnr, desc = "Prev quickfix (reference)" })
 
+        -- <leader>l*: Telescope LSP pickers (preview pane, leaves gd/gr/gf alone)
+        for key, picker in pairs({
+          d = "lsp_definitions",
+          r = "lsp_references",
+          i = "lsp_implementations",
+          t = "lsp_type_definitions",
+          s = "lsp_document_symbols",
+          w = "lsp_dynamic_workspace_symbols",
+          c = "lsp_incoming_calls",
+          o = "lsp_outgoing_calls",
+        }) do
+          vim.keymap.set("n", "<leader>l" .. key, "<Cmd>Telescope " .. picker .. "<CR>",
+            { buffer = bufnr, desc = "Telescope " .. picker })
+        end
+
         -- Enable inlay hints if server provides them (Neovim 0.10+)
         if client.server_capabilities.inlayHintProvider then
           pcall(vim.lsp.inlay_hint.enable, true, { bufnr = bufnr })

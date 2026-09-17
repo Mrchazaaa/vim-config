@@ -3,6 +3,7 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = vim.fn.has("win32") == 1
@@ -11,6 +12,9 @@ return {
       },
     },
     cmd = "Telescope",
+    -- ui-select replaces vim.ui.select globally, so it must load before the
+    -- first code action rather than waiting for a :Telescope invocation.
+    event = "VeryLazy",
     keys = {
       { "<leader>p", "<Cmd>Telescope<CR>", desc = "Open Telescope" },
     },
@@ -19,8 +23,14 @@ return {
         defaults = {
           path_display = { "smart" },
         },
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_cursor(),
+          },
+        },
       })
       require("telescope").load_extension("fzf")
+      require("telescope").load_extension("ui-select")
 
       local tc = require("telescope.config")
       local nvim_tree_api = require("nvim-tree.api")

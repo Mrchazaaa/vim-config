@@ -28,8 +28,9 @@ function M.setup()
     -- Clear search highlight on Esc
     vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
 
-    -- <leader>d: collect all diagnostics into the quickfix list and open it.
-    vim.keymap.set('n', '<leader>d', function()
+    -- <leader>dd: collect all diagnostics into the quickfix list and open it.
+    -- (dd not d, so the <leader>d* DAP maps don't sit behind a timeoutlen wait)
+    vim.keymap.set('n', '<leader>dd', function()
         vim.diagnostic.setqflist()
     end, { desc = 'Diagnostics to quickfix list' })
 
