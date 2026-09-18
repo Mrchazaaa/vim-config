@@ -214,6 +214,7 @@ return {
         -- "omnisharp",
         "roslyn_ls",
         "powershell_es",
+        "cucumber_language_server",
       }
       require("mason-lspconfig").setup({
         automatic_enable = servers,
