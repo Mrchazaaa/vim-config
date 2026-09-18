@@ -56,6 +56,7 @@ Folds are tree-sitter based and start open.
 - `za` toggles the fold under the cursor; 
 - `zA` recursively toggle all folds under the cursor
 - `zR` / `zM` open / close all folds in the file.
+- `:set foldlevel=...` controls which fold levels are open; use the cursor's `foldlevel('.')` to keep its level visible while closing sibling folds.
 
 ## Panes
 - `<C-w>+` / `<C-w>-` make the current pane taller / shorter.

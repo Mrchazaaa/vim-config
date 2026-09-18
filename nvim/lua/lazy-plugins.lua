@@ -12,6 +12,8 @@ local plugin_modules = {
   "plugins.commandcomplete",
   "plugins.git",
   "plugins.lsp",
+  "plugins.formatting",
+  "plugins.linting",
   "plugins.dap",
   "plugins.csv",
   "plugins.markdown",

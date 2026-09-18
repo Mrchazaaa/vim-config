@@ -12,12 +12,23 @@ return {
     },
     opts = {
       ensure_installed = {
-        'lua', 'vim', 'vimdoc',
-        'bash', 'json', 'yaml', 'toml', 'markdown',
-        'javascript', 'typescript', 'tsx', 'python',
-        'powershell', 'vue'
+        'lua', 
+        'vim', 
+        'vimdoc',
+        'bash', 
+        'json', 
+        'yaml', 
+        'toml', 
+        'markdown',
+        'javascript', 
+        'typescript', 
+        'tsx', 
+        'python',
+        'powershell', 
+        'vue'
       },
-      highlight = { 
+      auto_install = true,
+      highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
       },
@@ -32,7 +43,7 @@ return {
         },
       },
       refactor = {
-        smart_rename = { 
+        smart_rename = {
           enable = true,
           keymaps = { smart_rename = 'grr' },
         },
@@ -47,7 +58,7 @@ return {
       if vim.fn.has("win32") == 1 then
         local program_files_x86 = vim.env["ProgramFiles(x86)"]
         local vswhere = program_files_x86
-          and vim.fs.joinpath(program_files_x86, "Microsoft Visual Studio", "Installer", "vswhere.exe")
+            and vim.fs.joinpath(program_files_x86, "Microsoft Visual Studio", "Installer", "vswhere.exe")
 
         if vswhere and vim.fn.executable(vswhere) == 1 then
           local vs_root = vim.trim(vim.fn.systemlist({
@@ -61,13 +72,13 @@ return {
             "installationPath",
           })[1] or "")
           local msvc_roots = vs_root
-            and vim.fn.glob(vim.fs.joinpath(vs_root, "VC", "Tools", "MSVC", "*"), false, true)
-            or {}
+              and vim.fn.glob(vim.fs.joinpath(vs_root, "VC", "Tools", "MSVC", "*"), false, true)
+              or {}
           table.sort(msvc_roots)
           local msvc_root = msvc_roots[#msvc_roots]
           local sdk_roots = program_files_x86
-            and vim.fn.glob(vim.fs.joinpath(program_files_x86, "Windows Kits", "10", "Include", "*"), false, true)
-            or {}
+              and vim.fn.glob(vim.fs.joinpath(program_files_x86, "Windows Kits", "10", "Include", "*"), false, true)
+              or {}
           table.sort(sdk_roots)
           local sdk_include = sdk_roots[#sdk_roots]
 
@@ -141,13 +152,13 @@ return {
         end,
       },
       "williamboman/mason-lspconfig.nvim",
-      
+
       -- Completion
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      
+
       -- Snippets
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
@@ -232,7 +243,7 @@ return {
       -- ───────────── Completion (nvim-cmp) ─────────────
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      
+
       -- Load friendly-snippets
       require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -281,74 +292,4 @@ return {
     end,
   },
 
-  -- ───────────────────────────── Format-on-save ───────────────────────────
-  {
-    "stevearc/conform.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      formatters_by_ft = {
-        lua = { "stylua" },
-        python = { "ruff_format", "black" },
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        json = { "prettier" },
-        yaml = { "yamlfmt", "prettier" },
-        sh = { "shfmt" },
-      },
-      notify_on_error = true,
-      default_format_opts = { lsp_format = "fallback" },
-    },
-    config = function(_, opts)
-      require("conform").setup(opts)
-
-      vim.api.nvim_create_user_command("Format", function(args)
-        local format_opts = {
-          async = true,
-          lsp_fallback = true,
-        }
-
-        -- If the command was invoked with a range (e.g. :'<,'>Format), use it
-        if args.range > 0 then
-          local srow, scol = unpack(vim.api.nvim_buf_get_mark(0, "<"))
-          local erow, ecol = unpack(vim.api.nvim_buf_get_mark(0, ">"))
-
-          -- Conform expects 0-indexed lines
-          format_opts.range = {
-            start = { srow - 1, scol },
-            ["end"] = { erow - 1, ecol },
-          }
-        end
-
-        require("conform").format(format_opts)
-      end, {
-        range = true,
-        desc = "Format buffer or selected range with Conform",
-      })
-    end,
-  },
-
-  -- ───────────────────────────── Lint on save/leave insert ────────────────
-  {
-    "mfussenegger/nvim-lint",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      local lint = require("lint")
-      lint.linters_by_ft = {
-        python = { "ruff" },
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        yaml = { "yamllint" },
-        sh = { "shellcheck" },
-      }
-
-      -- Uncomment to enable auto-linting
-      -- local function try_lint()
-      --   lint.try_lint()
-      -- end
-
-      -- vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
-      --   callback = try_lint,
-      -- })
-    end,
-  },
 }
