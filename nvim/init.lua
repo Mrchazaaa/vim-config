@@ -5,6 +5,11 @@ package.path = config_path .. '/lua/?.lua;' .. config_path .. '/lua/?/init.lua;'
 -- Prefer LF line endings (matches repo .gitattributes; avoids diffview CRLF/LF mismatch)
 vim.opt.fileformats = { "unix", "dos" }
 
+-- Keep crash-recovery files out of project directories.
+local swap_dir = vim.fn.stdpath("state") .. "/swap"
+vim.fn.mkdir(swap_dir, "p")
+vim.opt.directory = swap_dir .. "//"
+
 -- Tree-sitter based code folding (folds start open).
 -- Set per-window when a treesitter parser exists, so lazy-loaded parsers still fold.
 vim.api.nvim_create_autocmd("FileType", {
