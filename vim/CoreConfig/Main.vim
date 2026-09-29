@@ -67,6 +67,11 @@ augroup markdown_wrap
   autocmd BufWinEnter * if &l:filetype ==# 'markdown' | setlocal wrap textwidth=0 formatoptions-=t | endif
 augroup END
 
+augroup quickfix_nowrap
+  autocmd!
+  autocmd FileType qf setlocal nowrap
+augroup END
+
 set path+=.,**
  
 nnoremap gg gg0
