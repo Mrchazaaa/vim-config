@@ -61,6 +61,8 @@ Folds are tree-sitter based and start open.
 ## Panes
 - `<C-w>+` / `<C-w>-` make the current pane taller / shorter.
 - `<C-w>>` / `<C-w><` make the current pane wider / narrower.
+- `<C-A-Up>` / `<C-A-Down>` make the current pane taller / shorter.
+- `<C-A-Left>` / `<C-A-Right>` make the current pane narrower / wider.
 
 ## Tabs
 - `:tabnew` (or `:tabnew <file>`) opens a new tab.
