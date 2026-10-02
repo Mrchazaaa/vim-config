@@ -17,6 +17,7 @@ local plugin_modules = {
   "plugins.dap",
   "plugins.csv",
   "plugins.markdown",
+  "plugins.smart-splits",
 }
 
 for _, module in ipairs(plugin_modules) do
