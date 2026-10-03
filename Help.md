@@ -39,6 +39,12 @@ Only bound while a language server is attached.
 
 In the picker: `<C-n>`/`<C-p>` move, `<CR>` jumps, `<C-x>`/`<C-v>`/`<C-t>` open in a split/vsplit/tab.
 
+### Code outline (Aerial)
+- `<leader>a` (Space, then `a`) or `:AerialToggle` opens/closes the outline and focuses it when opened.
+- In the outline: `j` / `k` select a symbol; `<CR>` jumps to its code; `q` closes; `?` shows help.
+- `za` toggles a branch; `zM` collapses all; `zr` reveals one more level; `zR` expands all. Try `zM`, then `zr` until class members are visible.
+- Includes classes, methods, properties, and fields. Uses Tree-sitter or LSP; full parameter lists/types may not appear.
+
 ## Completion and code actions
 - Completion (nvim-cmp) pops up automatically while typing. `<Tab>` / `<S-Tab>` cycle the menu, `<CR>` accepts the selection.
 - Sources are global, so every filetype gets them: LSP, buffer words, file paths, and snippets. A filetype with no language server attached still gets buffer/path/snippet completion, which is plain text matching rather than language-aware suggestions.
@@ -97,3 +103,4 @@ Folds are tree-sitter based and start open.
 
 ## Quickfix
 - `<leader>q` toggles the quickfix panel.
+- In quickfix, `p` opens the selected entry in the source window and returns focus to quickfix; `<CR>` jumps into the source window.
