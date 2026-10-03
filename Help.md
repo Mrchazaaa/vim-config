@@ -42,6 +42,7 @@ In the picker: `<C-n>`/`<C-p>` move, `<CR>` jumps, `<C-x>`/`<C-v>`/`<C-t>` open 
 ### Code outline (Aerial)
 - `<leader>a` (Space, then `a`) or `:AerialToggle` opens/closes the outline and focuses it when opened.
 - In the outline: `j` / `k` select a symbol; `<CR>` jumps to its code; `q` closes; `?` shows help.
+- `p` peeks at the symbol without leaving Aerial; the selected symbol's source line is highlighted while the outline has focus.
 - `za` toggles a branch; `zM` collapses all; `zr` reveals one more level; `zR` expands all. Try `zM`, then `zr` until class members are visible.
 - Includes classes, methods, properties, and fields. Uses Tree-sitter or LSP; full parameter lists/types may not appear.
 
@@ -103,4 +104,5 @@ Folds are tree-sitter based and start open.
 
 ## Quickfix
 - `<leader>q` toggles the quickfix panel.
-- In quickfix, `p` opens the selected entry in the source window and returns focus to quickfix; `<CR>` jumps into the source window.
+- In quickfix, the focused entry's source line is highlighted in loaded buffers while quickfix has focus (Neovim). Moving between entries moves the highlight; leaving quickfix clears it.
+- `p` brings the selected entry into view and returns focus to quickfix; `<CR>` jumps into the source window.

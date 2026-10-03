@@ -49,6 +49,32 @@ function M.setup()
         vim.cmd('copen')
     end, { desc = 'Toggle quickfix list' })
 
+    local preview_ns = vim.api.nvim_create_namespace('QuickfixPreview')
+    local preview_buf
+    vim.api.nvim_create_autocmd({ 'CursorMoved', 'BufEnter', 'WinEnter', 'BufLeave', 'WinLeave' }, {
+        group = vim.api.nvim_create_augroup('QuickfixPreview', { clear = true }),
+        callback = function(event)
+            if preview_buf and vim.api.nvim_buf_is_valid(preview_buf) then
+                vim.api.nvim_buf_clear_namespace(preview_buf, preview_ns, 0, -1)
+            end
+            preview_buf = nil
+            if event.event == 'BufLeave' or event.event == 'WinLeave' or vim.bo.filetype ~= 'qf' then
+                return
+            end
+            local is_loclist = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1].loclist == 1
+            local items = is_loclist and vim.fn.getloclist(0) or vim.fn.getqflist()
+            local item = items[vim.fn.line('.')]
+            if not item or item.valid ~= 1 or not vim.api.nvim_buf_is_loaded(item.bufnr)
+                or item.lnum < 1 or item.lnum > vim.api.nvim_buf_line_count(item.bufnr) then
+                return
+            end
+            preview_buf = item.bufnr
+            vim.api.nvim_buf_set_extmark(preview_buf, preview_ns, item.lnum - 1, 0, {
+                line_hl_group = 'QuickFixLine',
+            })
+        end,
+    })
+
     vim.keymap.set('n', 'q:', '<Nop>', { desc = 'Disable command history window' })
 
     -- Search and replace across project
