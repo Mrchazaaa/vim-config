@@ -4,6 +4,10 @@
 
 Use `:q` to close the help window.
 
+## Undo and redo (Normal mode)
+- `u` undoes the last change; `<C-r>` (Ctrl+r) redoes it.
+- `U` undoes all latest changes on the current line.
+
 ## Navigation
 - `:SessionSearch` searches auto session instances you can easily jump around (e.g: to vimconfig).
 - `<C-g>` shows the current file's path in the status area.
