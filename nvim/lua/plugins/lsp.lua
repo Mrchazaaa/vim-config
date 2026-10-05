@@ -285,8 +285,7 @@ return {
 
       -- Diagnostics UI configuration
       vim.diagnostic.config({
-        virtual_text = { current_line = false },
-        virtual_lines = { current_line = true },
+        virtual_text = false, -- inline display handled by tiny-inline-diagnostic
         severity_sort = true,
         float = { border = "rounded" },
         signs = true,
@@ -294,4 +293,15 @@ return {
     end,
   },
 
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    lazy = false, -- must load before LspAttach or it never hooks the buffer
+    priority = 1000,
+    opts = {
+      options = {
+        -- show diagnostics on every line, not just the cursor line
+        multilines = { enabled = true, always_show = true },
+      },
+    },
+  },
 }
