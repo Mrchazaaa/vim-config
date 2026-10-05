@@ -285,7 +285,8 @@ return {
 
       -- Diagnostics UI configuration
       vim.diagnostic.config({
-        virtual_text = true,
+        virtual_text = { current_line = false },
+        virtual_lines = { current_line = true },
         severity_sort = true,
         float = { border = "rounded" },
         signs = true,
