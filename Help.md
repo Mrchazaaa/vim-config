@@ -87,6 +87,7 @@ Folds are tree-sitter based and start open.
 
 ## Find and Replace
 - `/pattern` or `?pattern` — search forward/backward; `n`/`N` next/previous match.
+- `*` — highlights the word under the cursor (or the visual selection, matched literally) without moving; `n`/`N` then navigate. `#` searches backward (jumps).
 - `Esc` clears search highlights.
 - `:%s/old/new/g` — replace all in current file.
 - `:%s/old/new/gc` — confirm each replacement.

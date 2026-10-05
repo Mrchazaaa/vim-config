@@ -1,9 +1,10 @@
 call RelativeSource('/CoreConfig/MessagesToBuf.vim')
-call RelativeSource('/CoreConfig/CursorHistory.vim')
 call RelativeSource('/CoreConfig/WindowNavigation.vim')
-call RelativeSource('/CoreConfig/WindowScrolling.vim')
 call RelativeSource('/CoreConfig/ConfigVerification.vim')
 call RelativeSource('/CoreConfig/ConfigUpdate.vim')
+call RelativeSource('/CoreConfig/TextNavigation/CursorHistory.vim')
+call RelativeSource('/CoreConfig/TextNavigation/Search.vim')
+call RelativeSource('/CoreConfig/TextNavigation/Motions.vim')
 
 " Show a few lines of context around the cursor.
 set scrolloff=5
@@ -13,9 +14,6 @@ map Q gq
 tnoremap <Esc> <C-\><C-n>
 
 set wrap 
-set ignorecase
-set smartcase
-set incsearch
 " Basic settings
 set encoding=utf-8
 set backspace=indent,eol,start
@@ -31,7 +29,6 @@ set nofixendofline
 set nostartofline
 set splitbelow
 set splitright
-set hlsearch
 set laststatus=2
 set noruler
 set noshowmode
@@ -74,11 +71,6 @@ augroup quickfix_nowrap
 augroup END
 
 set path+=.,**
- 
-nnoremap gg gg0
-xnoremap gg gg0
-nnoremap G G$
-xnoremap G G$
 
 let mapleader = " "
 
