@@ -26,6 +26,7 @@ return {
         pattern = "csv",
         callback = function()
           csvview.enable()
+          vim.keymap.set("n", "<leader>ca", csvview.align, { buffer = true, desc = "Align CSV columns" })
         end,
       })
 
@@ -33,10 +34,6 @@ return {
       vim.keymap.set("n", "<leader>cv", function()
         csvview.toggle()
       end, { desc = "Toggle CSV view" })
-
-      vim.keymap.set("n", "<leader>ca", function()
-        csvview.align()
-      end, { desc = "Align CSV columns" })
     end,
   }
 }
