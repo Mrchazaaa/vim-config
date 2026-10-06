@@ -69,6 +69,21 @@ Folds are tree-sitter based and start open.
 - `zR` / `zM` open / close all folds in the file.
 - `:set foldlevel=...` controls which fold levels are open; use the cursor's `foldlevel('.')` to keep its level visible while closing sibling folds.
 
+## Testing (neotest)
+.NET tests (xUnit/NUnit/MSTest) via neotest-vstest. First discovery in a large solution builds the project, so it can be slow.
+
+- `<leader>ts` — toggle the test explorer tree.
+- `<leader>tt` — run the nearest test; `<leader>tf` — current file; `<leader>ta` — all tests; `<leader>tl` — re-run last.
+- `<leader>to` — open output for the nearest test; `<leader>tO` — toggle the output panel.
+- `<leader>tS` — stop running tests.
+- `<leader>td` — debug the nearest test (needs a .NET debug adapter, not configured yet).
+
+In the explorer tree:
+- `r` runs the test/class/file/project under the cursor; `d` debugs it; `u` stops.
+- `m` marks a test, `R` runs marked, `M` clears marks.
+- `o` / `O` show full / short output; `i` jumps to the test source.
+- `<CR>` expands/collapses; `e` expands all; `J` / `K` jump to next/previous failed; `x` clears results; `w` toggles watch.
+
 ## Panes
 - `<C-w>+` / `<C-w>-` make the current pane taller / shorter.
 - `<C-w>>` / `<C-w><` make the current pane wider / narrower.
