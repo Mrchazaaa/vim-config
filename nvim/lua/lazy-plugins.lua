@@ -15,6 +15,7 @@ local plugin_modules = {
   "plugins.formatting",
   "plugins.linting",
   "plugins.dap",
+  "plugins.test",
   "plugins.csv",
   "plugins.markdown",
   "plugins.smart-splits",

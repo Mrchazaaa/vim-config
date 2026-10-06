@@ -25,7 +25,8 @@ return {
         'tsx', 
         'python',
         'powershell', 
-        'vue'
+        'vue',
+        'c_sharp', -- neotest test discovery
       },
       auto_install = true,
       highlight = {
