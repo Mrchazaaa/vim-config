@@ -13,7 +13,7 @@ map Q gq
 " Allow ESC to enter normal mode in built in terminal
 tnoremap <Esc> <C-\><C-n>
 
-set wrap 
+set nowrap 
 " Basic settings
 set encoding=utf-8
 set backspace=indent,eol,start
