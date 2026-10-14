@@ -1,0 +1,5 @@
+ - Improve performance of large c# projects 
+ - Get neotest working for large c# projects
+ - Add find (and replace) functionality in specific files/subfolders (regex?)
+ - Standardize lsp code navigation keymaps
+ - Remove unnecessary plugins
