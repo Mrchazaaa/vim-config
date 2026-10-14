@@ -1,7 +1,7 @@
 return {
   {
     "mrjones2014/smart-splits.nvim",
-    opts = { default_amount = 5 },
+    opts = { resize = { amount = 5 } },
     init = function()
       -- <C-w><C-Arrow> resizes, then keeps resizing on further <C-Arrow> presses (or holding).
       -- Any other key exits and is executed normally.
