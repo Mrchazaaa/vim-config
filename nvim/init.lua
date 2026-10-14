@@ -42,6 +42,8 @@ require('lazy').setup(require('lazy-plugins'), {
 -- UI components (theme customizations after lazy loads)
 require('ui').setup()
 
+require('features.trim-whitespace')
+
 vim.api.nvim_create_user_command("HelpMe", function()
   vim.cmd("tabnew " .. vim.fn.fnameescape(config_path .. "/../Help.md"))
 end, { desc = "Open this configuration's help in a new tab" })
