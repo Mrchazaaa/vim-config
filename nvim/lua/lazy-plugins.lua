@@ -8,6 +8,7 @@ local plugin_modules = {
   "plugins.statusline",
   "plugins.explorer",
   "plugins.telescope",
+  "plugins.tabpicker",
   "plugins.dashboard",
   "plugins.commandcomplete",
   "plugins.git",
