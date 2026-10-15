@@ -126,3 +126,8 @@ In the explorer tree:
 - `<leader>q` toggles the quickfix panel.
 - In quickfix, the focused entry's source line is highlighted in loaded buffers while quickfix has focus (Neovim). Moving between entries moves the highlight; leaving quickfix clears it.
 - `p` brings the selected entry into view and returns focus to quickfix; `<CR>` jumps into the source window.
+
+## Reloading config
+- `:source $MYVIMRC` re-runs `init.lua` in the current session (options, global keymaps, autocmds).
+- `:source %` re-runs the file you're editing.
+- Plugin spec changes don't apply this way; use `:Lazy reload <plugin>` (e.g. `:Lazy reload diffview.nvim`) or restart.

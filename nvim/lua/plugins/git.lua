@@ -112,7 +112,7 @@ return {
   },
   {
     "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewRefresh" },
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewRefresh", "DiffviewFileHistory" },
     init = function()
       vim.opt.diffopt = {
         "internal",
@@ -157,6 +157,12 @@ return {
           { "n", "<leader>e", "<Cmd>DiffviewToggleFiles<CR>", { desc = "Toggle the file panel" } },
         },
         file_panel = {
+          { "n", "<leader>e", "<Cmd>DiffviewToggleFiles<CR>", { desc = "Close the file panel" } },
+        },
+        file_history_view = {
+          { "n", "<leader>e", "<Cmd>DiffviewToggleFiles<CR>", { desc = "Toggle the file panel" } },
+        },
+        file_history_panel = {
           { "n", "<leader>e", "<Cmd>DiffviewToggleFiles<CR>", { desc = "Close the file panel" } },
         },
       },
