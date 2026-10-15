@@ -16,7 +16,11 @@ return {
     -- first code action rather than waiting for a :Telescope invocation.
     event = "VeryLazy",
     keys = {
-      { "<leader>p", "<Cmd>Telescope<CR>", desc = "Open Telescope" },
+      {
+        "<leader>p",
+        function() require("telescope.builtin").builtin({ include_extensions = true }) end,
+        desc = "Open Telescope",
+      },
     },
     config = function()
       require("telescope").setup({
@@ -31,6 +35,7 @@ return {
       })
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("ui-select")
+      require("telescope").load_extension("tabs")
 
       local tc = require("telescope.config")
       local nvim_tree_api = require("nvim-tree.api")
@@ -45,7 +50,7 @@ return {
           },
           live_grep = {
             additional_args = function()
-              local args = {}
+              local args = { "--glob", "!.git/" }
               if show_hidden then table.insert(args, "--hidden") end
               if show_ignored then table.insert(args, "--no-ignore") end
               return args
