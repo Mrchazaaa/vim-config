@@ -3,4 +3,3 @@
  - Add find (and replace) functionality in specific files/subfolders (regex?)
  - Standardize lsp code navigation keymaps
  - Remove unnecessary plugins
- - How does nvim lazy pin versions and updates?

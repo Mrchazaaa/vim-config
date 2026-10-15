@@ -131,3 +131,13 @@ In the explorer tree:
 - `:source $MYVIMRC` re-runs `init.lua` in the current session (options, global keymaps, autocmds).
 - `:source %` re-runs the file you're editing.
 - Plugin spec changes don't apply this way; use `:Lazy reload <plugin>` (e.g. `:Lazy reload diffview.nvim`) or restart.
+
+## Lazy plugin commands
+- `:Lazy` opens the plugin manager.
+- `:Lazy install` installs missing plugins.
+- `:Lazy update` updates installed plugins and the lockfile.
+- `:Lazy sync` installs, updates, and removes plugins to match the config.
+- `:Lazy clean` removes plugins no longer in the config.
+- `:Lazy check` checks for available plugin updates.
+- `:Lazy restore` restores plugin versions from the lockfile.
+
