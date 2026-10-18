@@ -13,7 +13,9 @@ Use `:q` to close the help window.
 - `<C-g>` shows the current file's path in the status area.
 - `1<C-g>` shows the full absolute path.
 - `:echo expand('%:p')` prints the full absolute path; use `%:h` for its directory, `%:t` for the filename.
-- `:let @+ = expand('%:p')` copies the current buffer's absolute path into the system clipboard.
+- `:CopyBufferAbsolutePath` copies the current file's absolute path to the clipboard.
+- `:CopyBufferRelativePath` copies its path relative to Neovim's working directory.
+- `:CopyBufferFileName` copies just its file name.
 
 ## Code navigation
 
@@ -140,4 +142,3 @@ In the explorer tree:
 - `:Lazy clean` removes plugins no longer in the config.
 - `:Lazy check` checks for available plugin updates.
 - `:Lazy restore` restores plugin versions from the lockfile.
-
