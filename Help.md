@@ -61,6 +61,7 @@ In the picker: `<C-n>`/`<C-p>` move, `<CR>` jumps, `<C-x>`/`<C-v>`/`<C-t>` open 
 
 ## LSP status
 - `:LspInfo` (alias for `:checkhealth vim.lsp`) shows which language servers are attached to the current buffer, plus their root dir and settings.
+- If diagnostics stay stale after Copilot changes another file, run `:LspRestart` from the affected file to refresh its language server (you can specify specific language servers. E.G,`:LspRestart ts_ls` for TypeScript only).
 - `:lua =vim.tbl_map(function(c) return c.name end, vim.lsp.get_clients())` lists just the names of the clients running right now.
 - `:Mason` shows which servers are installed (`i` installs, `X` uninstalls); a server can be installed but not attached if the filetype doesn't match.
 
