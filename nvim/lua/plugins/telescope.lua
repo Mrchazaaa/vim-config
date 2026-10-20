@@ -21,11 +21,26 @@ return {
         function() require("telescope.builtin").builtin({ include_extensions = true }) end,
         desc = "Open Telescope",
       },
+      {
+        "<leader>fg",
+        function()
+          vim.ui.input({ prompt = "Glob (e.g. *.lua, comma-separated): " }, function(g)
+            if not g or g == "" then return end
+            require("telescope.builtin").live_grep({
+              glob_pattern = vim.split(g, "%s*,%s*"),
+              prompt_title = "Live Grep [" .. g .. "]",
+            })
+          end)
+        end,
+        desc = "Live grep in files matching glob",
+      },
     },
     config = function()
       require("telescope").setup({
         defaults = {
           path_display = { "smart" },
+          layout_strategy = "vertical",
+          layout_config = { preview_height = 0.35 },
         },
         extensions = {
           ["ui-select"] = {
