@@ -70,3 +70,33 @@ for _, path in ipairs({
     vim.api.nvim_echo({ { value } }, false, {})
   end, { desc = "Copy buffer " .. path[1] .. " to clipboard" })
 end
+
+-- Copy "File.Class.member" for the symbol under the cursor (via LSP documentSymbol).
+vim.api.nvim_create_user_command("CopySymbolPath", function()
+  local res = vim.lsp.buf_request_sync(0, "textDocument/documentSymbol",
+    { textDocument = vim.lsp.util.make_text_document_params() }, 2000)
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  line = line - 1
+  local function has(r)
+    return (line > r.start.line or (line == r.start.line and col >= r.start.character))
+      and (line < r["end"].line or (line == r["end"].line and col <= r["end"].character))
+  end
+  local path = { vim.fn.expand("%:t:r") }
+  for _, r in pairs(res or {}) do
+    local syms = r.result
+    while syms do
+      local hit
+      for _, s in ipairs(syms) do
+        if has(s.range or s.location.range) then hit = s break end
+      end
+      if not hit then break end
+      table.insert(path, (hit.name:gsub("%(.*", "")))
+      syms = hit.children
+    end
+    if #path > 1 then break end
+  end
+  if #path == 1 then return vim.notify("No symbol at cursor", vim.log.levels.WARN) end
+  local value = table.concat(path, ".")
+  vim.fn.setreg("+", value)
+  vim.api.nvim_echo({ { value } }, false, {})
+end, { desc = "Copy File.Class.member of symbol under cursor" })

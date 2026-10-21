@@ -24,7 +24,8 @@ Use `:q` to close the help window.
 - `]q` / `[q` step to the next/previous reference (quickfix entry) without leaving your place.
 - `K` shows hover documentation for the symbol under the cursor.
 - `<leader>dd` collects all diagnostics into the quickfix list and opens it (step through with `]q` / `[q`).
-- `grr` renames the symbol under the cursor across the project.
+- `grr` renames the symbol under the cursor within the current file only (backed by treesitter, no LSP needed).
+- `<F2>` renames the symbol under the cursor across the project (uses the LSP).
 - `<leader>ca` opens available code actions (works in visual mode for range-specific actions). The list appears in a small Telescope window anchored at the cursor.
 - `<leader>p` opens Telescope; from there pick `find_files` or `live_grep` to search files and contents.
 - `:ToggleIgnore` toggles whether hidden/gitignored files show up in Telescope searches and nvim-tree. Prints whether the feature is ON or OFF. Default is OFF.

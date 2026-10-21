@@ -40,7 +40,7 @@ return {
         defaults = {
           path_display = { "smart" },
           layout_strategy = "vertical",
-          layout_config = { preview_height = 0.35 },
+          layout_config = { vertical = { preview_height = 0.35 } },
         },
         extensions = {
           ["ui-select"] = {
