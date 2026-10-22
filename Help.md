@@ -66,6 +66,11 @@ In the picker: `<C-n>`/`<C-p>` move, `<CR>` jumps, `<C-x>`/`<C-v>`/`<C-t>` open 
 - `:lua =vim.tbl_map(function(c) return c.name end, vim.lsp.get_clients())` lists just the names of the clients running right now.
 - `:Mason` shows which servers are installed (`i` installs, `X` uninstalls); a server can be installed but not attached if the filetype doesn't match.
 
+## Split / join (treesj)
+Tree-sitter aware: works on the node under the cursor (arrays, objects, argument lists, blocks, etc.).
+- `gS` toggles the node between split (one item per line) and joined (one line).
+- `:TSJSplit` / `:TSJJoin` force a split / join.
+
 ## Code folding
 Folds are tree-sitter based and start open.
 - `za` toggles the fold under the cursor; 

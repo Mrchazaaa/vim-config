@@ -20,6 +20,7 @@ local plugin_modules = {
   "plugins.csv",
   "plugins.markdown",
   "plugins.smart-splits",
+  "plugins.splitjoin",
 }
 
 for _, module in ipairs(plugin_modules) do
