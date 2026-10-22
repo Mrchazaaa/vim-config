@@ -177,7 +177,7 @@ return {
         vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { buffer = bufnr, desc = "Next quickfix (reference)" })
         vim.keymap.set("n", "[q", "<cmd>cprev<CR>", { buffer = bufnr, desc = "Prev quickfix (reference)" })
 
-        -- <leader>l*: Telescope LSP pickers (preview pane, leaves gd/gr/gf alone)
+        -- <leader>g*: Telescope LSP pickers (preview pane, leaves gd/gr/gf alone)
         for key, picker in pairs({
           d = "lsp_definitions",
           r = "lsp_references",
@@ -188,7 +188,7 @@ return {
           c = "lsp_incoming_calls",
           o = "lsp_outgoing_calls",
         }) do
-          vim.keymap.set("n", "<leader>l" .. key, "<Cmd>Telescope " .. picker .. "<CR>",
+          vim.keymap.set("n", "<leader>g" .. key, "<Cmd>Telescope " .. picker .. "<CR>",
             { buffer = bufnr, desc = "Telescope " .. picker })
         end
 
