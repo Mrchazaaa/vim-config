@@ -221,11 +221,6 @@ return {
         "powershell_es",
         "cucumber_language_server",
       }
-      require("mason-lspconfig").setup({
-        automatic_enable = servers,
-        ensure_installed = servers,
-      })
-
       -- Per-server overrides. mason-lspconfig v2 dropped `handlers`; nvim 0.11+
       -- merges these on top of the configs nvim-lspconfig ships in lsp/.
       vim.lsp.config("lua_ls", vim.tbl_deep_extend("force", lsp_zero.nvim_lua_ls(), {
@@ -252,6 +247,12 @@ return {
           javascript = { inlayHints = { includeInlayParameterNameHints = "all" } },
           typescript = { inlayHints = { includeInlayParameterNameHints = "all" } },
         },
+      })
+
+      -- Enable servers only after their overrides are registered.
+      require("mason-lspconfig").setup({
+        automatic_enable = servers,
+        ensure_installed = servers,
       })
 
       -- ───────────── Completion (nvim-cmp) ─────────────
