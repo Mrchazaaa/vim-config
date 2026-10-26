@@ -112,6 +112,7 @@ return {
   },
   {
     "sindrets/diffview.nvim",
+    keys = { { "<leader>gv", "<Cmd>DiffviewOpen<CR>", desc = "Open Git diff view" } },
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewRefresh", "DiffviewFileHistory" },
     init = function()
       vim.opt.diffopt = {
