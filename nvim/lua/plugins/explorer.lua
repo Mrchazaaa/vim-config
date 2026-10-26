@@ -78,6 +78,7 @@ return {
 
       -- optional keymaps
       vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>fe", "<Cmd>NvimTreeFocus<CR>", { desc = "Focus explorer" })
     end,
   }
 }

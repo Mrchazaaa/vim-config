@@ -95,8 +95,10 @@ return {
         topdelete    = { text = "‾" },
         changedelete = { text = "~" },
       },
+      current_line_blame = true,
     },
-    config = function()
+    config = function(_, opts)
+      require("gitsigns").setup(opts)
       vim.opt.signcolumn = "yes"
     end,
   },
@@ -156,12 +158,14 @@ return {
       keymaps = {
         view = {
           { "n", "<leader>e", "<Cmd>DiffviewToggleFiles<CR>", { desc = "Toggle the file panel" } },
+          { "n", "<leader>fe", "<Cmd>DiffviewFocusFiles<CR>", { desc = "Focus the file panel" } },
         },
         file_panel = {
           { "n", "<leader>e", "<Cmd>DiffviewToggleFiles<CR>", { desc = "Close the file panel" } },
         },
         file_history_view = {
           { "n", "<leader>e", "<Cmd>DiffviewToggleFiles<CR>", { desc = "Toggle the file panel" } },
+          { "n", "<leader>fe", "<Cmd>DiffviewFocusFiles<CR>", { desc = "Focus the file panel" } },
         },
         file_history_panel = {
           { "n", "<leader>e", "<Cmd>DiffviewToggleFiles<CR>", { desc = "Close the file panel" } },
