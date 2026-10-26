@@ -78,7 +78,6 @@ return {
 
       -- optional keymaps
       vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>f", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
     end,
   }
 }

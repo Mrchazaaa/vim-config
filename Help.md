@@ -27,22 +27,23 @@ Use `:q` to close the help window.
 - `grr` renames the symbol under the cursor within the current file only (backed by treesitter, no LSP needed).
 - `<F2>` renames the symbol under the cursor across the project (uses the LSP).
 - `<leader>ca` opens available code actions (works in visual mode for range-specific actions). The list appears in a small Telescope window anchored at the cursor.
+- In normal mode, the `<leader>ca` list also offers **Rename symbol (LSP)** when the language server supports it; `<F2>` starts the same rename directly.
 - `<leader>p` opens Telescope; from there pick `find_files` or `live_grep` to search files and contents.
 - `:ToggleIgnore` toggles whether hidden/gitignored files show up in Telescope searches and nvim-tree. Prints whether the feature is ON or OFF. Default is OFF.
 - `<C-i>` / `<C-o>` move forward/backward through your jump history.
 
-### Peeking with Telescope (`<leader>l`)
+### Peeking with Telescope (`<leader>g`)
 Same LSP queries as `gd` / `gr`, but in a Telescope picker with a preview pane — you
 see the code without leaving the buffer, and `<Esc>` backs out with your cursor untouched.
 Only bound while a language server is attached.
 
-- `<leader>ld` — definitions of the symbol under the cursor.
-- `<leader>lr` — references to it.
-- `<leader>li` — implementations (interfaces, abstract methods).
-- `<leader>lt` — type definition.
-- `<leader>ls` — symbols in the current file.
-- `<leader>lw` — symbols across the workspace (fuzzy, queries the server as you type).
-- `<leader>lc` / `<leader>lo` — incoming / outgoing calls (who calls this, what this calls).
+- `<leader>gd` — definitions of the symbol under the cursor.
+- `<leader>gr` — references to it.
+- `<leader>gi` — implementations (interfaces, abstract methods).
+- `<leader>gt` — type definition.
+- `<leader>gs` — symbols in the current file.
+- `<leader>gw` — symbols across the workspace (fuzzy, queries the server as you type).
+- `<leader>gc` / `<leader>go` — incoming / outgoing calls (who calls this, what this calls).
 
 In the picker: `<C-n>`/`<C-p>` move, `<CR>` jumps, `<C-x>`/`<C-v>`/`<C-t>` open in a split/vsplit/tab.
 
@@ -100,6 +101,7 @@ In the explorer tree:
 - `<C-A-Left>` / `<C-A-Right>` make the current pane narrower / wider.
 
 ## Tabs
+- `<leader>tn` opens a new tab; `<leader>tc` closes the current tab.
 - `:tabnew` (or `:tabnew <file>`) opens a new tab.
 - `gt` / `gT` go to the next / previous tab.
 - `{n}gt` goes to tab `n` (e.g. `3gt`).

@@ -16,6 +16,7 @@ return {
     -- first code action rather than waiting for a :Telescope invocation.
     event = "VeryLazy",
     keys = {
+      { "<leader>ff", "<Cmd>Telescope find_files<CR>", desc = "Find files" },
       {
         "<leader>p",
         function() require("telescope.builtin").builtin({ include_extensions = true }) end,

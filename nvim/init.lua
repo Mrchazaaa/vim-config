@@ -48,6 +48,9 @@ vim.api.nvim_create_user_command("HelpMe", function()
   vim.cmd("tabnew " .. vim.fn.fnameescape(config_path .. "/../Help.md"))
 end, { desc = "Open this configuration's help in a new tab" })
 
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "New tab" })
+vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close tab" })
+
 -- Create a Lua scratchfile command
 vim.api.nvim_create_user_command("LuaScratch", function()
   local scratch_path = vim.fn.stdpath("config") .. "/scratch.lua"
