@@ -146,6 +146,7 @@ return {
     dependencies = {
       -- LSP
       "neovim/nvim-lspconfig",
+      { "nvimtools/none-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
       {
         "williamboman/mason.nvim",
         build = function()
@@ -167,9 +168,12 @@ return {
     },
     config = function()
       local lsp_zero = require("lsp-zero")
+      require("features.code-actions").setup()
 
       -- Set up default keymaps and capabilities
-      lsp_zero.on_attach(function(client, bufnr)
+      vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
         -- Default keymaps (gd, gr, K, etc.)
         lsp_zero.default_keymaps({ buffer = bufnr })
         vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
@@ -196,7 +200,7 @@ return {
         if client.server_capabilities.inlayHintProvider then
           pcall(vim.lsp.inlay_hint.enable, true, { bufnr = bufnr })
         end
-      end)
+      end })
 
       -- Mason setup
       require("mason").setup({
@@ -229,6 +233,14 @@ return {
           Lua = {
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
+            format = {
+              defaultConfig = {
+                indent_style = "space",
+                indent_size = "2",
+                quote_style = "double",
+                max_line_length = "100",
+              },
+            },
           },
         },
       }))
