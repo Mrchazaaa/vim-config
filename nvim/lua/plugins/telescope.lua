@@ -66,6 +66,12 @@ return {
             auto_quoting = true,
             -- Evaluated per search, so :ToggleHidden / :ToggleIgnore apply here too.
             additional_args = rg_extra_args,
+            mappings = {
+              i = {
+                -- <C-Space> arrives as a plain space in this terminal.
+                ["<C-f>"] = require("telescope-live-grep-args.actions").to_fuzzy_refine,
+              },
+            },
           },
         },
       })
@@ -84,6 +90,10 @@ return {
             no_ignore = show_ignored,
           },
           live_grep = {
+            -- <C-Space> (default) arrives as a plain space in this terminal.
+            mappings = {
+              i = { ["<C-f>"] = require("telescope.actions").to_fuzzy_refine },
+            },
             additional_args = rg_extra_args,
           },
         })
