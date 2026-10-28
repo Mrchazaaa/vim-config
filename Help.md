@@ -32,6 +32,25 @@ Use `:q` to close the help window.
 - `:ToggleIgnore` toggles whether hidden/gitignored files show up in Telescope searches and nvim-tree. Prints whether the feature is ON or OFF. Default is OFF.
 - `<C-i>` / `<C-o>` move forward/backward through your jump history.
 
+### Live grep with arguments (`live_grep_args`)
+Open with `:Telescope live_grep_args` or pick `live_grep_args` from `<leader>p`. The prompt is passed to ripgrep, so you can add rg flags, globs and paths after the search term.
+
+If the prompt doesn't start with `"`, `'` or `-`, the whole prompt (spaces included) is searched as a single regex pattern. Once you add flags, quote the search term yourself.
+
+- `foo bar` — search for "foo bar" everywhere.
+- `"foo bar" src/` — search only inside `src/`.
+- `"foo" --iglob *.lua` — only in files matching the glob.
+- `"foo" --iglob !*test*` — exclude files matching the glob.
+- `"foo" -tcs` — only C# files (`-t` takes a ripgrep file type: `lua`, `ts`, `py`, ...).
+- `-w foo` — whole-word matches only.
+- `-F "Foo.Bar("` — treat the pattern as a literal string (no regex).
+- `--no-ignore "foo"` — also search gitignored files.
+
+`:ToggleHidden` / `:ToggleIgnore` apply here too.
+
+### Fuzzy refine (`<C-f>`)
+In `live_grep` and `live_grep_args`, press `<C-f>` to freeze the current results and fuzzy-filter them by typing. Telescope's default for this is `<C-Space>`, but this terminal sends it as a plain space, so it's remapped to `<C-f>` (this replaces Telescope's preview-scroll-left in those pickers).
+
 ### Peeking with Telescope (`<leader>g`)
 Same LSP queries as `gd` / `gr`, but in a Telescope picker with a preview pane — you
 see the code without leaving the buffer, and `<Esc>` backs out with your cursor untouched.
