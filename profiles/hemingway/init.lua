@@ -1,4 +1,5 @@
--- Soft-wrap prose at word boundaries, preserving indentation on wrapped lines.
-vim.opt.wrap = true
-vim.opt.linebreak = true
-vim.opt.breakindent = true
+local profile_path = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":p:h")
+local repo_root = vim.fn.fnamemodify(profile_path, ":h:h")
+dofile(repo_root .. "/profiles/common.lua").setup()
+
+require("features.writing")

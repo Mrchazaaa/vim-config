@@ -6,7 +6,7 @@ local plugin_modules = {
   "plugins.finder",
   "plugins.theme",
   "plugins.statusline",
-  "plugins.explorer",
+  "plugins.outline",
   "plugins.telescope",
   "plugins.tabpicker",
   "plugins.dashboard",

@@ -25,19 +25,8 @@ vim.api.nvim_create_autocmd("FileType", {
 -- OmniSharp spams WARN-level noise (grew lsp.log to 6.8GB). Only log real errors.
 vim.lsp.log.set_level(vim.log.levels.ERROR)
 
--- Bootstrap lazy.nvim (this must happen before requiring lazy)
-require('lazy-bootstrap')
-
--- Setup lazy.nvim with plugins (now lazy.nvim is available)
-require('lazy').setup(require('lazy-plugins'), {
-  change_detection = { notify = false },
-  rocks = { enabled = false },
-  performance = {
-    rtp = {
-      paths = { "/usr/lib/nvim" },
-    },
-  },
-})
+-- Shared plugin manager and explorer, plus this profile's coding plugins.
+dofile(config_path .. '/../profiles/common.lua').setup(require('lazy-plugins'))
 
 -- UI components (theme customizations after lazy loads)
 require('ui').setup()

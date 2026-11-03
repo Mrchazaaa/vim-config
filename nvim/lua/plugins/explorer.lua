@@ -1,36 +1,5 @@
 return {
   {
-    "stevearc/aerial.nvim",
-    branch = "nvim-0.11",
-    cmd = { "AerialToggle", "AerialOpen", "AerialClose", "AerialInfo" },
-    keys = {
-      { "<leader>a", "<Cmd>AerialToggle<CR>", desc = "Toggle code outline" },
-    },
-    opts = {
-      highlight_on_hover = true,
-      filter_kind = {
-        "Class", "Constructor", "Enum", "Field", "Function", "Interface",
-        "Module", "Method", "Namespace", "Property", "Struct",
-      },
-    },
-  },
-  -- {
-  --   "preservim/nerdtree",
-  --   dependencies = {
-  --       "tiagofumo/vim-nerdtree-syntax-highlight",
-  --   },
-  --   lazy = false,
-  --   cmd = { "NERDTree", "NERDTreeToggle", "NERDTreeFind" },
-  --   init = function()
-  --     vim.g.NERDTreeHijackNetrw = 1
-  --   end,
-  --   config = function()
-  --     vim.g.NERDTreeShowHidden = 1
-  --   end
-  -- },
-
-
-  {
     "nvim-tree/nvim-tree.lua",
     version = "*", -- use latest stable release
     dependencies = {
@@ -62,19 +31,6 @@ return {
           timeout = 5000, -- big repos (C:/source/core) blow the 400ms default
         },
       })
-
-      -- vim.api.nvim_create_user_command('NvimTreeModified', function()
-      --     local git_files = vim.fn.systemlist("git ls-files -m")
-      --     if #git_files == 0 then
-      --         print("No modified files.")
-      --         return
-      --     end
-      --     require('nvim-tree.api').tree.open()
-      --     require('nvim-tree.api').tree.find_file(git_files[1])
-      --     for _, file in ipairs(git_files) do
-      --         vim.cmd("edit " .. file)
-      --     end
-      -- end, {})
 
       -- optional keymaps
       vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
