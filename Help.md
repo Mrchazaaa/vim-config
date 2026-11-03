@@ -4,6 +4,10 @@
 
 Use `:q` to close the help window.
 
+## Profiles
+
+- **Hemingway** — minimal writing profile with soft word wrapping. Launch from the default Linux installation with `NVIM_APPNAME=nvim/vim-config/profiles/hemingway nvim`.
+
 ## Undo and redo (Normal mode)
 - `u` undoes the last change; `<C-r>` (Ctrl+r) redoes it.
 - `U` undoes all latest changes on the current line.
