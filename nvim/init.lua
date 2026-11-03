@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.lsp.log.set_level(vim.log.levels.ERROR)
 
 -- Shared plugin manager and explorer, plus this profile's coding plugins.
-dofile(config_path .. '/../profiles/common.lua').setup(require('lazy-plugins'))
+dofile(config_path .. '/../profiles/coding.lua').setup()
 
 -- UI components (theme customizations after lazy loads)
 require('ui').setup()

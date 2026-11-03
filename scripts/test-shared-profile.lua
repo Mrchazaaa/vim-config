@@ -9,7 +9,7 @@ local ok, err = pcall(function()
   assert(#vim.api.nvim_get_runtime_file("lua/plugins/explorer.lua", false) > 0,
     "Plugin implementation runtime was lost during lazy setup")
 
-  if package.loaded["lazy-plugins"] then
+  if vim.fn.exists(":CopySymbolPath") == 2 then
     assert(plugins["aerial.nvim"], "Coding profile lost its outline plugin")
   else
     assert(not plugins["aerial.nvim"], "Writing profile loaded coding plugins")

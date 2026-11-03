@@ -41,9 +41,21 @@ that checkout. Neovim and npm must already be available on `PATH`.
 
 ## Launch profiles
 
+### Coding (default)
+
+For software development.
+
+```bash
+nvim
+```
+
 ### Hemingway
 
-Minimal writing profile with soft word wrapping. Launch from the default Linux installation with `NVIM_APPNAME=nvim/vim-config/profiles/hemingway nvim`.
+For writing prose.
+
+```bash
+NVIM_APPNAME=nvim/vim-config/profiles/hemingway nvim
+```
 
 ### Minimal profile
 

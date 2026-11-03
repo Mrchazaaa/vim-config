@@ -49,7 +49,7 @@ done
 
 # Test plugin manager (if using lazy.nvim)
 echo "5. Testing plugin manager..."
-if [ -f "vim-config/nvim/lua/lazy-bootstrap.lua" ]; then
+if [ -f "nvim/lua/lazy-bootstrap.lua" ] || [ -f "vim-config/nvim/lua/lazy-bootstrap.lua" ]; then
     timeout 30 nvim --headless -c "lua require('lazy-bootstrap')" -c "qall!" || {
         echo "Plugin manager test failed"
         exit 1

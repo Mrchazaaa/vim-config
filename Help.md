@@ -6,7 +6,21 @@ Use `:q` to close the help window.
 
 ## Profiles
 
-- **Hemingway** — minimal writing profile with soft word wrapping. Launch from the default Linux installation with `NVIM_APPNAME=nvim/vim-config/profiles/hemingway nvim`.
+### Coding (default)
+
+For software development.
+
+```bash
+nvim
+```
+
+### Hemingway
+
+For writing prose.
+
+```bash
+NVIM_APPNAME=nvim/vim-config/profiles/hemingway nvim
+```
 
 ## Undo and redo (Normal mode)
 - `u` undoes the last change; `<C-r>` (Ctrl+r) redoes it.
