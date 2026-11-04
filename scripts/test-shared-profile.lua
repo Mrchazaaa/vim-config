@@ -15,6 +15,18 @@ local ok, err = pcall(function()
     assert(not plugins["aerial.nvim"], "Writing profile loaded coding plugins")
     assert(vim.wo.wrap and vim.wo.linebreak and vim.wo.breakindent,
       "Writing profile lost its wrapping settings")
+    vim.cmd("setlocal nowrap nolinebreak nobreakindent")
+    vim.cmd("enew")
+    assert(vim.wo.wrap and vim.wo.linebreak and vim.wo.breakindent,
+      "Writing profile did not restore wrapping when entering a text buffer")
+    local text_win = vim.api.nvim_get_current_win()
+    require("nvim-tree.api").tree.open()
+    assert(not vim.wo.wrap, "Writing wrapping overrode explorer window settings")
+    vim.wo[text_win].linebreak = false
+    vim.wo[text_win].breakindent = false
+    vim.api.nvim_set_current_win(text_win)
+    assert(vim.wo.wrap and vim.wo.linebreak and vim.wo.breakindent,
+      "Writing profile did not restore wrapping when returning from explorer")
   end
   require("nvim-tree.api").tree.open()
   assert(vim.bo.filetype == "NvimTree", "Explorer did not open")

@@ -3,6 +3,19 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 
+-- Window-local values can be restored when buffers or windows are switched.
+vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter", "FileType" }, {
+  group = vim.api.nvim_create_augroup("writing_wrap", { clear = true }),
+  callback = function()
+    if vim.bo.buftype ~= "" or vim.bo.filetype == "dashboard" then
+      return
+    end
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.breakindent = true
+  end,
+})
+
 -- Highlight misspellings; use z= for suggestions and zg to accept a word.
 vim.opt.spelllang = "en"
 vim.opt.spell = true
