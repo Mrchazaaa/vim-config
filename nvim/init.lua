@@ -28,7 +28,7 @@ vim.lsp.log.set_level(vim.log.levels.ERROR)
 -- Shared plugin manager and explorer, plus this profile's coding plugins.
 dofile(config_path .. '/../profiles/coding.lua').setup()
 
--- UI components (theme customizations after lazy loads)
+-- Coding UI commands and mappings (appearance is shared by profiles/common.lua).
 require('ui').setup()
 
 require('features.trim-whitespace')

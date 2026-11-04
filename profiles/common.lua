@@ -7,6 +7,8 @@ function M.setup(plugins)
 
   -- Select shared plugins; implementations live in nvim/lua/plugins/.
   local specs = {
+    { import = "plugins.theme" },
+    { import = "plugins.statusline" },
     { import = "plugins.explorer" },
     { import = "plugins.smart-splits" },
     { import = "plugins.telescope" },
@@ -14,6 +16,7 @@ function M.setup(plugins)
   }
   vim.list_extend(specs, plugins or {})
   require("lazy-setup").setup(specs)
+  require("ui.appearance").setup()
 end
 
 return M

@@ -6,8 +6,6 @@ function M.setup()
   dofile(profiles_path .. "/common.lua").setup({
     { import = "plugins.core" },
     { import = "plugins.finder" },
-    { import = "plugins.theme" },
-    { import = "plugins.statusline" },
     { import = "plugins.outline" },
     { import = "plugins.tabpicker" },
     { import = "plugins.commandcomplete" },

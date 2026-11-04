@@ -1,18 +1,6 @@
 local M = {}
 
 function M.setup()
-    if vim.fn.has('termguicolors') == 1 then
-        vim.opt.termguicolors = true
-    end
-
-    -- Folds
-    vim.opt.foldcolumn = 'auto:1'
-    vim.opt.fillchars = {
-        foldopen = '▾',
-        foldclose = '▸',
-        fold = ' ',
-    }
-
     -- Clear search highlight on Esc
     vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
 
