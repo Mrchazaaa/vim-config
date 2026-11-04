@@ -6,7 +6,12 @@ function M.setup(plugins)
   vim.opt.runtimepath:prepend(repo_root .. "/nvim")
 
   -- Select shared plugins; implementations live in nvim/lua/plugins/.
-  local specs = { { import = "plugins.explorer" } }
+  local specs = {
+    { import = "plugins.explorer" },
+    { import = "plugins.smart-splits" },
+    { import = "plugins.telescope" },
+    { import = "plugins.dashboard" },
+  }
   vim.list_extend(specs, plugins or {})
   require("lazy-setup").setup(specs)
 end

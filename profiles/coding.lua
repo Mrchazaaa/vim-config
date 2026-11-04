@@ -9,9 +9,7 @@ function M.setup()
     { import = "plugins.theme" },
     { import = "plugins.statusline" },
     { import = "plugins.outline" },
-    { import = "plugins.telescope" },
     { import = "plugins.tabpicker" },
-    { import = "plugins.dashboard" },
     { import = "plugins.commandcomplete" },
     { import = "plugins.git" },
     { import = "plugins.lsp" },
@@ -21,7 +19,6 @@ function M.setup()
     { import = "plugins.test" },
     { import = "plugins.csv" },
     { import = "plugins.markdown" },
-    { import = "plugins.smart-splits" },
     { import = "plugins.splitjoin" },
   })
 end
