@@ -13,6 +13,7 @@ function M.setup(plugins)
     { import = "plugins.smart-splits" },
     { import = "plugins.telescope" },
     { import = "plugins.dashboard" },
+    { import = "plugins.git" },
   }
   vim.list_extend(specs, plugins or {})
   require("lazy-setup").setup(specs)

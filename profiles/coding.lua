@@ -9,7 +9,6 @@ function M.setup()
     { import = "plugins.outline" },
     { import = "plugins.tabpicker" },
     { import = "plugins.commandcomplete" },
-    { import = "plugins.git" },
     { import = "plugins.lsp" },
     { import = "plugins.formatting" },
     { import = "plugins.linting" },

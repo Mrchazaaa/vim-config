@@ -165,6 +165,8 @@ In the explorer tree:
 - `:SearchAndReplaceConfirm` — same but confirms each replacement.
 
 ## Git review
+- `:Git add %` — stages the current file via vim-fugitive (`%` is the current file's path). Stages the saved version on disk; run `:w` first if you have unsaved changes.
+- `:Gwrite` — saves the current buffer and stages the file in one command (vim-fugitive).
 - `:DiffviewFileHistory` — opens the repository commit history, newest first.
 - In the history panel, `<CR>`, `o`, or double-click opens the selected commit in Diffview.
 - `<C-A-d>` also opens the selected commit in Diffview.
