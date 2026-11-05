@@ -17,6 +17,8 @@ function M.setup(plugins)
   vim.list_extend(specs, plugins or {})
   require("lazy-setup").setup(specs)
   require("ui.appearance").setup()
+
+  require("features.tabs").setup()
 end
 
 return M
