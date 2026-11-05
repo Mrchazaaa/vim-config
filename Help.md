@@ -6,6 +6,11 @@ Use `:q` to close the help window.
 
 ## Profiles
 
+Neovim's installed `init.vim` loads only `nvim/init.lua`. Profiles choose their
+Vimscript dependencies: `profiles/common.lua` loads shared navigation, while
+`profiles/coding.lua` also loads the legacy settings in `vim/CoreConfig/Main.vim`.
+Hemingway uses the shared setup and its own writing settings.
+
 ### Coding (default)
 
 For software development.
@@ -27,6 +32,7 @@ NVIM_APPNAME=nvim/vim-config/profiles/hemingway nvim
 - `U` undoes all latest changes on the current line.
 
 ## Navigation
+- `<A-Left>` / `<A-Right>` (Alt+Left/Right) move backward/forward through your jump history.
 - `:SessionSearch` searches auto session instances you can easily jump around (e.g: to vimconfig).
 - `<C-g>` shows the current file's path in the status area.
 - `1<C-g>` shows the full absolute path.

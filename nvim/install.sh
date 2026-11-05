@@ -17,9 +17,7 @@ main() {
   ensure_command nvim neovim "Would you like to install Neovim now?"
   ensure_npm
 
-  nvim_content="source $REPO_ROOT/vim/.vimrc
-
-lua dofile('$REPO_ROOT/nvim/init.lua')"
+  nvim_content="lua dofile('$REPO_ROOT/nvim/init.lua')"
 
   write_file_if_changed "$NVIM_INIT" "$nvim_content"
   log "Neovim will load $NVIM_INIT."

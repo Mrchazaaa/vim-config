@@ -5,4 +5,7 @@ function! RelativeSource(relpath) abort
 endfunction
 
 call RelativeSource('/CoreConfig/Main.vim')
-
+call RelativeSource('/CoreConfig/WindowNavigation.vim')
+call RelativeSource('/CoreConfig/TextNavigation/CursorHistory.vim')
+call RelativeSource('/CoreConfig/TextNavigation/Search.vim')
+call RelativeSource('/CoreConfig/TextNavigation/Motions.vim')

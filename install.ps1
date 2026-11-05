@@ -39,7 +39,6 @@ if (Test-Path -LiteralPath $luaInitPath -PathType Leaf) {
 $vimRoot = $repoRoot.Replace('\', '/').Replace("'", "''")
 $content = @"
 let s:vimconfig_root = '$vimRoot'
-execute 'source ' . fnameescape(s:vimconfig_root . '/vim/.vimrc')
 execute 'lua dofile(' . string(s:vimconfig_root . '/nvim/init.lua') . ')'
 "@ + [Environment]::NewLine
 

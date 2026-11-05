@@ -1,10 +1,8 @@
-call RelativeSource('/CoreConfig/MessagesToBuf.vim')
-call RelativeSource('/CoreConfig/WindowNavigation.vim')
-call RelativeSource('/CoreConfig/ConfigVerification.vim')
-call RelativeSource('/CoreConfig/ConfigUpdate.vim')
-call RelativeSource('/CoreConfig/TextNavigation/CursorHistory.vim')
-call RelativeSource('/CoreConfig/TextNavigation/Search.vim')
-call RelativeSource('/CoreConfig/TextNavigation/Motions.vim')
+" Standalone legacy settings; navigation is loaded separately by each entry point.
+let s:core_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+for s:file in ['MessagesToBuf.vim', 'ConfigVerification.vim', 'ConfigUpdate.vim']
+  execute 'source ' . fnameescape(s:core_dir . '/' . s:file)
+endfor
 
 " Show a few lines of context around the cursor.
 set scrolloff=5

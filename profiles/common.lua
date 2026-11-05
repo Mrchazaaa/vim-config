@@ -5,6 +5,16 @@ local M = {}
 function M.setup(plugins)
   vim.opt.runtimepath:prepend(repo_root .. "/nvim")
 
+  -- Reuse the navigation mappings shared with Vim in every Neovim profile.
+  for _, path in ipairs({
+    "WindowNavigation.vim",
+    "TextNavigation/CursorHistory.vim",
+    "TextNavigation/Motions.vim",
+    "TextNavigation/Search.vim",
+  }) do
+    vim.cmd.source(vim.fn.fnameescape(repo_root .. "/vim/CoreConfig/" .. path))
+  end
+
   -- Select shared plugins; implementations live in nvim/lua/plugins/.
   local specs = {
     { import = "plugins.theme" },
