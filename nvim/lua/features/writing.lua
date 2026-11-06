@@ -16,10 +16,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter", "FileType" }, {
   end,
 })
 
--- Highlight misspellings; use z= for suggestions and zg to accept a word.
-vim.opt.spelllang = "en"
-vim.opt.spell = true
-
+vim.opt.spell = false
 -- Use the built-in Markdown heading folds, with sections open initially.
 vim.g.markdown_folding = 1
 vim.api.nvim_create_autocmd("FileType", {

@@ -27,6 +27,14 @@ For writing prose.
 NVIM_APPNAME=nvim/vim-config/profiles/hemingway nvim
 ```
 
+#### Spelling and prose checking
+
+- Harper checks British English spelling, grammar, and style locally in Markdown and plain-text buffers.
+- `:WritingFix` or `<leader>ca` shows available prose corrections at the cursor.
+- `:WritingIssues` opens a navigable list of spelling/grammar/style issues for the document.
+- Built-in spellcheck is disabled. Words previously accepted with `zg` do not
+  automatically carry over to Harper's dictionary. `:LspInfo` shows whether Harper is attached.
+
 ## Undo and redo (Normal mode)
 - `u` undoes the last change; `<C-r>` (Ctrl+r) redoes it.
 - `U` undoes all latest changes on the current line.
