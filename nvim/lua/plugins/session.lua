@@ -1,8 +1,4 @@
-
 return {
-  { "tpope/vim-sensible" },
-  { "tpope/vim-commentary" },
-
   {
     "rmagatti/auto-session",
     config = function()

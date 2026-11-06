@@ -17,12 +17,16 @@ function M.setup(plugins)
 
   -- Select shared plugins; implementations live in nvim/lua/plugins/.
   local specs = {
+    { "tpope/vim-sensible" },
+    { "tpope/vim-commentary" },
     { import = "plugins.theme" },
     { import = "plugins.statusline" },
     { import = "plugins.explorer" },
     { import = "plugins.smart-splits" },
     { import = "plugins.telescope" },
     { import = "plugins.dashboard" },
+    { import = "plugins.session" },
+    { import = "plugins.commandcomplete" },
     { import = "plugins.git" },
   }
   vim.list_extend(specs, plugins or {})
