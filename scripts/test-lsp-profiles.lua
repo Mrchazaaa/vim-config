@@ -66,13 +66,12 @@ local ok, err = pcall(function()
       end
     end
     assert(found_popup, "Diagnostic explanation missing")
-    assert(vim.api.nvim_buf_get_commands(bufnr, {}).WritingFix, "WritingFix missing")
-    vim.cmd("WritingIssues")
-    assert(#vim.fn.getloclist(0) >= 2, "WritingIssues missing diagnostics")
+    vim.cmd("DiagnosticsList")
+    assert(#vim.fn.getloclist(0) >= 2, "DiagnosticsList missing diagnostics")
     vim.cmd("lclose")
   end
   vim.cmd("enew!")
-  assert(vim.fn.exists(":WritingFix") == 0, "Writing commands leaked into other buffers")
+  assert(vim.fn.exists(":DiagnosticsList") == 2, "DiagnosticsList missing in other buffers")
   if coding then
     vim.cmd("edit nvim/lua/lsp/setup.lua")
     assert(vim.wait(15000, function()
@@ -81,7 +80,7 @@ local ok, err = pcall(function()
     end, 100), "Lua language server did not attach")
     assert(#vim.lsp.get_clients({ bufnr = 0, name = "harper_ls" }) == 0, "Harper attached to code")
     assert(vim.fn.maparg("gr", "n", false, true).desc == "LSP references", "Coding mappings lost")
-    assert(vim.fn.exists(":WritingFix") == 0, "Writing commands leaked into Lua")
+    assert(vim.fn.exists(":DiagnosticsList") == 2, "DiagnosticsList missing in Lua")
     assert(package.loaded.cmp and package.loaded.luasnip, "Completion did not load")
     assert(package.loaded["nvim-treesitter.configs"], "Tree-sitter did not load")
   end

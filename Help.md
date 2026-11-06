@@ -31,8 +31,8 @@ NVIM_APPNAME=nvim/vim-config/profiles/hemingway nvim
 
 - Available in both coding and Hemingway profiles when Harper attaches to Markdown/plain text.
 - Harper checks British English spelling, grammar, and style locally in Markdown and plain-text buffers.
-- `:WritingFix` or `<leader>ca` shows available prose corrections at the cursor.
-- `:WritingIssues` opens a navigable list of spelling/grammar/style issues for the document.
+- `<leader>ca` shows available prose corrections at the cursor.
+- `:DiagnosticsList` opens a navigable list of diagnostics for the current buffer (available in all buffers).
 - Built-in spellcheck is disabled. Words previously accepted with `zg` do not
   automatically carry over to Harper's dictionary. `:LspInfo` shows whether Harper is attached.
 - `K` shows the issue at the text cursor. Hemingway also shows it after a half-second

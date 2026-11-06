@@ -2,6 +2,9 @@ local M = {}
 
 function M.setup(style)
   assert(style == "inline" or style == "popup", "Unknown diagnostic style: " .. tostring(style))
+  vim.api.nvim_create_user_command("DiagnosticsList", function()
+    vim.diagnostic.setloclist()
+  end, { desc = "List diagnostics for the current buffer" })
   vim.diagnostic.config({
     underline = true,
     virtual_text = false,

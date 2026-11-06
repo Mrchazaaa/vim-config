@@ -34,6 +34,7 @@ function M.setup(plugins)
   require("ui.appearance").setup()
 
   require("features.tabs").setup()
+  require("features.buffer-paths").setup()
 end
 
 return M

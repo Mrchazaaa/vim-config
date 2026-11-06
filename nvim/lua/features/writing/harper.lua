@@ -6,7 +6,7 @@ return {
   settings = {
     ["harper-ls"] = {
       dialect = "British",
-      linters = { SpellCheck = true },
+      linters = { SpellCheck = true, UseTitleCase = false },
     },
   },
 }

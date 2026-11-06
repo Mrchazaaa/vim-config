@@ -6,12 +6,6 @@ function M.setup()
 end
 
 function M.attach(bufnr)
-  vim.api.nvim_buf_create_user_command(bufnr, "WritingFix", function()
-    vim.lsp.buf.code_action()
-  end, { desc = "Show prose corrections at the cursor" })
-  vim.api.nvim_buf_create_user_command(bufnr, "WritingIssues", function()
-    vim.diagnostic.setloclist()
-  end, { desc = "List spelling, grammar, and style issues in this document" })
   vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action,
     { buffer = bufnr, desc = "Writing corrections" })
   vim.keymap.set("n", "K", function()
