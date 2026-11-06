@@ -29,11 +29,32 @@ NVIM_APPNAME=nvim/vim-config/profiles/hemingway nvim
 
 #### Spelling and prose checking
 
+- Available in both coding and Hemingway profiles when Harper attaches to Markdown/plain text.
 - Harper checks British English spelling, grammar, and style locally in Markdown and plain-text buffers.
 - `:WritingFix` or `<leader>ca` shows available prose corrections at the cursor.
 - `:WritingIssues` opens a navigable list of spelling/grammar/style issues for the document.
 - Built-in spellcheck is disabled. Words previously accepted with `zg` do not
   automatically carry over to Harper's dictionary. `:LspInfo` shows whether Harper is attached.
+- `K` shows the issue at the text cursor. Hemingway also shows it after a half-second
+  pause in Normal mode; coding displays inline diagnostics instead.
+
+### LSP configuration layout
+
+- `profiles/coding.lua` selects the `coding` and `writing` server groups with inline diagnostics.
+- `profiles/hemingway/init.lua` selects the `writing` group with cursor-idle popups.
+- `nvim/lua/plugins/lsp.lua` declares the shared LSP/Mason dependencies.
+- `nvim/lua/lsp/setup.lua` configures the selected servers and runs Mason setup once.
+- `nvim/lua/lsp/servers/init.lua` defines server groups; neighbouring modules hold
+  Lua and TypeScript overrides. Harper's configuration belongs to the writing feature.
+- `nvim/lua/lsp/keymaps.lua` owns coding mappings.
+- `nvim/lua/features/writing/init.lua` owns proofreading commands and mappings;
+  `harper.lua` configures its language-server backend, and `editor.lua` provides
+  the wrapping/folding preferences enabled by Hemingway.
+- `nvim/lua/ui/diagnostics.lua` owns diagnostic display and popup behaviour.
+- `nvim/lua/plugins/completion.lua`, `treesitter.lua`, and `inline-diagnostics.lua`
+  define the coding-only completion, syntax, and diagnostic plugins.
+- User-facing feature behaviour lives under `features/`, including its backend-specific
+  settings. `lsp/` handles shared server infrastructure; `plugins/` declares dependencies.
 
 ## Undo and redo (Normal mode)
 - `u` undoes the last change; `<C-r>` (Ctrl+r) redoes it.
