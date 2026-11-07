@@ -1,6 +1,6 @@
 " Standalone legacy settings; navigation is loaded separately by each entry point.
 let s:core_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-for s:file in ['MessagesToBuf.vim', 'ConfigVerification.vim', 'ConfigUpdate.vim']
+for s:file in ['MessagesToBuf.vim', 'ConfigVerification.vim', 'ConfigUpdate.vim', 'Quickfix.vim']
   execute 'source ' . fnameescape(s:core_dir . '/' . s:file)
 endfor
 
@@ -60,12 +60,6 @@ augroup markdown_wrap
   autocmd!
   autocmd FileType markdown setlocal wrap textwidth=0 formatoptions-=t
   autocmd BufWinEnter * if &l:filetype ==# 'markdown' | setlocal wrap textwidth=0 formatoptions-=t | endif
-augroup END
-
-augroup quickfix_nowrap
-  autocmd!
-  autocmd FileType qf setlocal nowrap
-  autocmd FileType qf nnoremap <silent> <buffer> p <CR><C-w>p
 augroup END
 
 set path+=.,**

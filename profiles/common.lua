@@ -8,6 +8,7 @@ function M.setup(plugins)
   -- Reuse the navigation mappings shared with Vim in every Neovim profile.
   for _, path in ipairs({
     "WindowNavigation.vim",
+    "Quickfix.vim",
     "TextNavigation/CursorHistory.vim",
     "TextNavigation/Motions.vim",
     "TextNavigation/Search.vim",
