@@ -10,21 +10,6 @@ function M.setup()
         vim.diagnostic.setqflist()
     end, { desc = 'Diagnostics to quickfix list' })
 
-    vim.keymap.set('n', '<leader>q', function()
-        if vim.fn.getcmdwintype() ~= '' then
-            vim.cmd('quit')
-            return
-        end
-
-        for _, win in ipairs(vim.fn.getwininfo()) do
-            if win.quickfix == 1 and win.loclist == 0 then
-                vim.cmd('cclose')
-                return
-            end
-        end
-        vim.cmd('copen')
-    end, { desc = 'Toggle quickfix list' })
-
     local preview_ns = vim.api.nvim_create_namespace('QuickfixPreview')
     local preview_buf
     vim.api.nvim_create_autocmd({ 'CursorMoved', 'BufEnter', 'WinEnter', 'BufLeave', 'WinLeave' }, {

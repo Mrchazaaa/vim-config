@@ -36,6 +36,7 @@ function M.setup(plugins)
 
   require("features.tabs").setup()
   require("features.buffer-paths").setup()
+  require("features.quickfix").setup()
 end
 
 return M
