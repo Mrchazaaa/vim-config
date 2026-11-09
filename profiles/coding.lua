@@ -28,7 +28,6 @@ function M.setup()
     { import = "plugins.dap" },
     { import = "plugins.test" },
     { import = "plugins.csv" },
-    { import = "plugins.markdown" },
     { import = "plugins.splitjoin" },
   })
 end

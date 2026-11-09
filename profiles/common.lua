@@ -29,6 +29,7 @@ function M.setup(plugins)
     { import = "plugins.session" },
     { import = "plugins.commandcomplete" },
     { import = "plugins.git" },
+    { import = "plugins.markdown" },
   }
   vim.list_extend(specs, plugins or {})
   require("lazy-setup").setup(specs)
