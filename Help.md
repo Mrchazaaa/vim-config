@@ -173,7 +173,7 @@ In the explorer tree:
 - `<C-A-Left>` / `<C-A-Right>` make the current pane narrower / wider.
 
 ## Tabs
-- `<leader>tn` opens a new tab; `<leader>tc` closes the current tab.
+- `<leader>tc` opens a new tab; `<leader>tx` closes the current tab.
 - `:tabnew` (or `:tabnew <file>`) opens a new tab.
 - `gt` / `gT` go to the next / previous tab.
 - `{n}gt` goes to tab `n` (e.g. `3gt`).

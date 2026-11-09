@@ -6,6 +6,7 @@ function M.setup(opts)
   local coding = vim.tbl_contains(opts.server_groups, "coding")
 
   require("ui.diagnostics").setup(opts.diagnostics)
+  vim.api.nvim_create_user_command("LspInfo", "checkhealth vim.lsp", {})
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("profile_lsp_attach", { clear = true }),
     callback = function(args)
