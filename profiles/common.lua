@@ -5,6 +5,10 @@ local M = {}
 function M.setup(plugins)
   vim.opt.runtimepath:prepend(repo_root .. "/nvim")
 
+  vim.api.nvim_create_user_command("HelpMe", function()
+    vim.cmd("tabnew " .. vim.fn.fnameescape(repo_root .. "/Help.md"))
+  end, { desc = "Open this configuration's help in a new tab" })
+
   -- Reuse the navigation mappings shared with Vim in every Neovim profile.
   for _, path in ipairs({
     "WindowNavigation.vim",
