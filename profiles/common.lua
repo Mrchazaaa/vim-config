@@ -38,6 +38,7 @@ function M.setup(plugins)
   vim.list_extend(specs, plugins or {})
   require("lazy-setup").setup(specs)
   require("ui.appearance").setup()
+  require("ui.gutter").setup()
 
   require("features.tabs").setup()
   require("features.buffer-paths").setup()

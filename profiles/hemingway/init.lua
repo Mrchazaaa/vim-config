@@ -7,5 +7,4 @@ dofile(repo_root .. "/profiles/common.lua").setup({
     opts = { server_groups = { "writing" }, diagnostics = "popup" },
   },
 })
-
 require("features.writing").setup()
