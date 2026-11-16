@@ -1,3 +1,4 @@
+set signcolumn=yes
 set number relativenumber
 
 augroup numbertoggle

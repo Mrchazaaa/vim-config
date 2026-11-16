@@ -6,7 +6,7 @@ for s:file in [
       \ 'ConfigUpdate.vim',
       \ 'Quickfix.vim',
       \ 'EditorSettings.vim',
-      \ 'LineNumbers.vim',
+      \ 'gutter.vim',
       \ 'Filetypes.vim',
       \ 'Folding.vim',
       \ ]

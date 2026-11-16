@@ -10,7 +10,6 @@ function M.setup()
     "ConfigVerification.vim",
     "ConfigUpdate.vim",
     "EditorSettings.vim",
-    "LineNumbers.vim",
     "Filetypes.vim",
     "Folding.vim",
   }) do

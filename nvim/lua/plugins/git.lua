@@ -99,7 +99,6 @@ return {
     },
     config = function(_, opts)
       require("gitsigns").setup(opts)
-      vim.opt.signcolumn = "yes"
     end,
   },
 

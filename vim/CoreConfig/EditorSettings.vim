@@ -25,7 +25,6 @@ set splitright
 set laststatus=2
 set noruler
 set noshowmode
-set signcolumn=yes
 set mouse=a
 set updatetime=1000
 set autoread
