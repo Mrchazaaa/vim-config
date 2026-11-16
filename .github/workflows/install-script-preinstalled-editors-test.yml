@@ -45,7 +45,7 @@ jobs:
 
           grep -F "source $VIMCONFIG_INSTALL_DIR/vim/.vimrc" "$HOME/.vimrc"
           grep -F "source $VIMCONFIG_INSTALL_DIR/vim/VimSpecific.vim" "$HOME/.vimrc"
-          grep -F "source $VIMCONFIG_INSTALL_DIR/vim/.vimrc" "$HOME/.config/nvim/init.vim"
+          ! grep -F "source $VIMCONFIG_INSTALL_DIR/vim/.vimrc" "$HOME/.config/nvim/init.vim"
           grep -F "lua dofile('$VIMCONFIG_INSTALL_DIR/nvim/init.lua')" "$HOME/.config/nvim/init.vim"
 
       - name: Verify Vim starts with installed shim

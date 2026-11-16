@@ -8,7 +8,11 @@ Use `:q` to close the help window.
 
 Neovim's installed `init.vim` loads only `nvim/init.lua`. Profiles choose their
 Vimscript dependencies: `profiles/common.lua` loads shared navigation, while
-`profiles/coding.lua` also loads the legacy settings in `vim/CoreConfig/Main.vim`.
+`profiles/coding.lua` explicitly loads shared command modules (`MessagesToBuf`,
+`ConfigVerification`, `ConfigUpdate`) and settings modules (`EditorSettings`,
+`LineNumbers`, `Filetypes`, `Folding`) from `vim/CoreConfig/`.
+`vim/CoreConfig/Main.vim` is a Vim-only composition root; Neovim modules can source
+individual shared Vimscript files without loading Vim's entry point.
 Hemingway uses the shared setup and its own writing settings.
 
 ### Coding (default)

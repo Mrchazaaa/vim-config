@@ -3,8 +3,19 @@ local profiles_path = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":p:h")
 local M = {}
 
 function M.setup()
-  -- Coding retains the legacy editor settings; navigation comes from common.lua.
-  vim.cmd.source(vim.fn.fnameescape(profiles_path .. "/../vim/CoreConfig/Main.vim"))
+  -- Select shared Vimscript modules explicitly; Main.vim belongs to Vim.
+  -- Navigation and quickfix are loaded once by common.lua.
+  for _, path in ipairs({
+    "MessagesToBuf.vim",
+    "ConfigVerification.vim",
+    "ConfigUpdate.vim",
+    "EditorSettings.vim",
+    "LineNumbers.vim",
+    "Filetypes.vim",
+    "Folding.vim",
+  }) do
+    vim.cmd.source(vim.fn.fnameescape(profiles_path .. "/../vim/CoreConfig/" .. path))
+  end
   dofile(profiles_path .. "/common.lua").setup({
     { import = "plugins.finder" },
     { import = "plugins.outline" },

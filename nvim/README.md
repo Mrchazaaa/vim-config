@@ -12,8 +12,10 @@ Or run the Neovim-only installer directly:
 ./nvim/install.sh
 ```
 
-This writes `~/.config/nvim/init.vim` as a shim that sources the shared Vim
-config and loads `nvim/init.lua`.
+This writes `~/.config/nvim/init.vim` as a shim that loads `nvim/init.lua`.
+Neovim profiles select individual shared modules from `vim/CoreConfig/`;
+`Main.vim` is only used by Vim. Re-run the installer to refresh older shims
+that also source `vim/.vimrc`.
 
 ## Updating from Neovim
 
