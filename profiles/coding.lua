@@ -28,7 +28,7 @@ function M.setup()
         { "nvimtools/none-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
         "hrsh7th/cmp-nvim-lsp",
       },
-      opts = { server_groups = { "coding", "writing" }, diagnostics = "inline" },
+      opts = { server_groups = { "coding" }, diagnostics = "inline" },
     },
     { import = "plugins.completion" },
     { import = "plugins.treesitter" },
